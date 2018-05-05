@@ -1,5 +1,7 @@
 import java.awt.Color;
 
+import processing.core.PApplet;
+
 public class Sling {
 
 		private Projectile p; 
@@ -86,8 +88,12 @@ public class Sling {
 			health-=amount;
 			if(health<=0)
 			{
-			isDead = true;
+				isDead = true;
+			}
+		
 		}
 		
+		public void draw(PApplet p) {
+			p.rect(0, 0, 10, 10);
 		}
 }
