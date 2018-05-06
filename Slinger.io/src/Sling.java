@@ -87,7 +87,7 @@ public class Sling {
 		 */
 		public void increaseProjectileStrength()
 		{
-			p.increasePower(10);
+			//p.increasePower(10);
 		}
 		
 		
