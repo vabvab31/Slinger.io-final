@@ -6,6 +6,7 @@ import processing.core.PApplet;
 import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.image.BufferedImage;
 
 public class Main {
 	public static void main(String[] args)
@@ -15,11 +16,16 @@ public class Main {
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
 		JFrame window = (JFrame)canvas.getFrame();
-
-		window.setSize(400, 300);
-		window.setMinimumSize(new Dimension(100,100));
+		
+		window.setLocation(0, 0);
+		window.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+		System.out.println(Toolkit.getDefaultToolkit().getScreenSize().width + ", " + Toolkit.getDefaultToolkit().getScreenSize().height);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
+		window.setCursor(window.getToolkit().createCustomCursor(
+                 new BufferedImage( 1, 1, BufferedImage.TYPE_INT_ARGB ),
+                 new Point(),
+                 null ) );
 
 		window.setVisible(true);
 	}

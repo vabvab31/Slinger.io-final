@@ -3,11 +3,13 @@
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class DrawingSurface extends PApplet {
+public class DrawingSurface extends PApplet{
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
@@ -45,21 +47,50 @@ public class DrawingSurface extends PApplet {
 
 		float ratioX = (float)width/DRAWING_WIDTH;
 		float ratioY = (float)height/DRAWING_HEIGHT;
+		int mx = (int)(mouseX/ratioX);
+		int my = (int)(mouseY/ratioY);
+		
 		menu();
 		instructions();
 		
 		scale(ratioX, ratioY);
 		if (screen == 0)
-			menu.draw(this);
+			menu.draw(this,mx,my);
 		else if (screen == 1)
 			instructions.draw(this);
 
+		fill(180, 66, 64);
+		rect(mx-2, my-2, 5, 5);
+		
 		popMatrix();
+		
+		controls();
 	}
 
-
+	private void controls() {
+		if (screen == 0) {
+			if (isPressed(LEFT) && menu.inst()) {
+				screen = 1;
+			}
+		}
+		if (screen == 1) {
+			if (isPressed(RIGHT)) {
+				screen = 0;
+			}
+		}
+	}
+	
 	public void keyPressed() {
 		keys.add(keyCode);
+	}
+	
+	public void mousePressed() {
+		keys.add(mouseButton);
+	}
+	
+	public void mouseReleased() {
+		while(keys.contains(mouseButton))
+			keys.remove(new Integer(mouseButton));
 	}
 
 	public void keyReleased() {
@@ -67,6 +98,8 @@ public class DrawingSurface extends PApplet {
 			keys.remove(new Integer(keyCode));
 	}
 
+	
+	
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);
 	}
