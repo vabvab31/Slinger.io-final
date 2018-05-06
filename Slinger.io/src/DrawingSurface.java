@@ -29,13 +29,9 @@ public class DrawingSurface extends PApplet{
 		setSlings();
 		maps = new Map[3];
 		setMaps();
-		menu();
-		instructions();
-		mapMenu();
-	}
-	
-	private void menu() {
 		menu = new MenuScreen();
+		instructions = new InstructionScreen();
+		mapMenu = new MapMenu();
 	}
 	
 	private void setSlings() {
@@ -45,14 +41,6 @@ public class DrawingSurface extends PApplet{
 	
 	private void setMaps() {
 		maps[0] = new Map1(slings[0],slings[1]);
-	}
-	
-	private void mapMenu() {
-		mapMenu = new MapMenu();
-	}
-	
-	private void instructions() {
-		instructions = new InstructionScreen();
 	}
 	
 	public void runMe() {
