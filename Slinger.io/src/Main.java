@@ -19,7 +19,6 @@ public class Main {
 		
 		window.setLocation(0, 0);
 		window.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-		System.out.println(Toolkit.getDefaultToolkit().getScreenSize().width + ", " + Toolkit.getDefaultToolkit().getScreenSize().height);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
 		window.setCursor(window.getToolkit().createCustomCursor(

@@ -14,21 +14,44 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	private MenuScreen menu; 
+	private MapMenu mapMenu;
+	private Map[] maps;
+	private Sling[] slings;
 	private InstructionScreen instructions;
-	private int screen; // 0 for Menu, 1 for Instructions, 2 for ClassicMap
+	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 10 for map1, 20 for map2, 30 for map3.
 	private ArrayList<Integer> keys;
 
 	public DrawingSurface() {
 		super();
 		keys = new ArrayList<Integer>();
 		screen = 0;
+		slings = new Sling[2];
+		setSlings();
+		maps = new Map[3];
+		setMaps();
+		menu();
+		instructions();
+		mapMenu();
 	}
 	
-	public void menu() {
+	private void menu() {
 		menu = new MenuScreen();
 	}
 	
-	public void instructions() {
+	private void setSlings() {
+		slings[0] = new Sling();
+		slings[1] = new Sling();
+	}
+	
+	private void setMaps() {
+		maps[0] = new Map1(slings[0],slings[1]);
+	}
+	
+	private void mapMenu() {
+		mapMenu = new MapMenu();
+	}
+	
+	private void instructions() {
 		instructions = new InstructionScreen();
 	}
 	
@@ -50,14 +73,17 @@ public class DrawingSurface extends PApplet{
 		int mx = (int)(mouseX/ratioX);
 		int my = (int)(mouseY/ratioY);
 		
-		menu();
-		instructions();
-		
 		scale(ratioX, ratioY);
 		if (screen == 0)
 			menu.draw(this,mx,my);
 		else if (screen == 1)
-			instructions.draw(this);
+			instructions.draw(this, mx, my);
+		else if (screen == 2) 
+			mapMenu.draw(this,mx,my);
+		else if (screen == 10) {
+			maps[0].draw(this);
+		}
+			
 
 		fill(180, 66, 64);
 		rect(mx-2, my-2, 5, 5);
@@ -68,22 +94,36 @@ public class DrawingSurface extends PApplet{
 	}
 
 	private void controls() {
-		if (screen == 0) {
-			if (isPressed(LEFT) && menu.inst()) {
-				screen = 1;
-			}
-		}
-		if (screen == 1) {
-			if (isPressed(RIGHT)) {
-				screen = 0;
-			}
-		}
+		
 	}
 	
 	public void keyPressed() {
 		keys.add(keyCode);
 	}
-	
+	public void mouseClicked() {
+		if (screen == 0) {
+			if (mouseButton == LEFT) {
+				if (menu.inst())
+					screen = 1;
+				if (menu.start())
+					screen = 2;
+			}
+		}
+		if (screen == 1) {
+			if (mouseButton == RIGHT) {
+				screen = 0;
+			}
+		}
+		if (screen == 2) {
+			if (mouseButton == LEFT) {
+				if (mapMenu.map1())
+					screen = 10;
+			}
+			if (mouseButton == RIGHT) {
+				screen = 0;
+			}
+		}
+	}
 	public void mousePressed() {
 		keys.add(mouseButton);
 	}

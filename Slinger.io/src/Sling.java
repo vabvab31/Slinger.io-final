@@ -11,6 +11,14 @@ public class Sling {
 		private boolean isDead;
 		
 		
+		public Sling() {
+			p = new TennisBall();
+			c = Color.WHITE;
+			xPos = 0;
+			health = 100;
+			isDead = false;
+		}
+		
 		/**
 		 * 
 		 * @param p - The type of projectile this sling has
@@ -91,6 +99,11 @@ public class Sling {
 				isDead = true;
 			}
 		
+		}
+		
+		public int getHealth() 
+		{
+			return health;
 		}
 		
 		public void draw(PApplet p) {
