@@ -16,44 +16,44 @@ public class MapMenu {
 		PFont font1 = p.createFont("font1.ttf", 120);
 		PFont font2 = p.createFont("font2.ttf", 150);
 		
-		// Start
+		// Map1
 		p.textFont(font1);
-		Rectangle start = new Rectangle(70, 200, 200, 200);
-		start.setFill(24, 119, 160);
-		if (start.isPointInside(mouseX, mouseY)) {
-			start.setFill(17, 92, 124);
+		Rectangle m1 = new Rectangle(70, 200, 200, 200);
+		m1.setFill(24, 119, 160);
+		if (m1.isPointInside(mouseX, mouseY)) {
+			m1.setFill(17, 92, 124);
 			this.map1 = true;
 		}
 		else
 			this.map1 = false;
-		start.draw(p);
+		m1.draw(p);
 		p.fill(255);
 		p.textSize(70);
 		p.text("(map1)", 107, 320);
 		
-		// Instructions
-		Rectangle inst = new Rectangle(300, 200, 200, 200);
-		inst.setFill(24, 119, 160);
-		if (inst.isPointInside(mouseX, mouseY)) {
-			inst.setFill(17, 92, 124);
+		// Map2
+		Rectangle m2 = new Rectangle(300, 200, 200, 200);
+		m2.setFill(24, 119, 160);
+		if (m2.isPointInside(mouseX, mouseY)) {
+			m2.setFill(17, 92, 124);
 			this.map2 = true;
 		}
 		else
 			this.map2 = false;
-		inst.draw(p);
+		m2.draw(p);
 		p.fill(255);
 		p.text("(map2)", 335, 320);
 		
-		// About
-		Rectangle about = new Rectangle(530, 200, 200, 200);
-		about.setFill(24, 119, 160);
-		if (about.isPointInside(mouseX, mouseY)) {
-			about.setFill(17, 92, 124);
+		// Map3
+		Rectangle m3 = new Rectangle(530, 200, 200, 200);
+		m3.setFill(24, 119, 160);
+		if (m3.isPointInside(mouseX, mouseY)) {
+			m3.setFill(17, 92, 124);
 			this.map3 = true;
 		}
 		else
 			this.map3 = false;
-		about.draw(p);
+		m3.draw(p);
 		p.fill(255);
 		p.text("(map3)", 567, 320);
 		

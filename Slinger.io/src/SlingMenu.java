@@ -3,78 +3,214 @@ import processing.core.PApplet;
 import processing.core.PFont;
 
 public class SlingMenu {
-	private boolean map1, map2, map3;
+	private boolean done, canMoveOn, red1, red2, green1, green2, blue1, blue2;
+	private int red01, red02, green01, green02, blue01, blue02;
 	public SlingMenu() {
-		map1 = false;
-		map2 = false;
-		map3 = false;
+		done = false;
+		canMoveOn = false;
+		red1 = false;
+		red2 = false;
+		green1 = false;
+		green2 = false;
+		blue1 = false;
+		blue2 = false;
+		red01 = (int)(Math.random() * 255);
+		red02 = (int)(Math.random() * 255);
+		green01 = (int)(Math.random() * 255);
+		green02 = (int)(Math.random() * 255);
+		blue01 = (int)(Math.random() * 255);
+		blue02 = (int)(Math.random() * 255);
 	}
 	
-	public void draw (PApplet p, int mouseX, int mouseY) {
+	public void draw (PApplet p, int mouseX, int mouseY, Sling[] slings) {
 		p.background(60, 61, 68);
+		p.textAlign(p.LEFT);
 		
 		PFont font1 = p.createFont("font1.ttf", 120);
-		PFont font2 = p.createFont("font2.ttf", 150);
 		
-		// Start
-		p.textFont(font1);
-		Rectangle start = new Rectangle(70, 200, 200, 200);
-		start.setFill(24, 119, 160);
-		if (start.isPointInside(mouseX, mouseY)) {
-			start.setFill(17, 92, 124);
-			this.map1 = true;
+		try {
+			if (slings[0].getProjectile() != null && slings[1].getProjectile() != null)
+				this.done = true;
+		}
+		catch(NullPointerException e){}
+
+		// Next
+		Rectangle done = new Rectangle(320, 480, 160, 100);
+		done.setFill(24, 119, 160);
+		if (!this.done)
+			done.setFill(200,200,200);
+		else if (done.isPointInside(mouseX, mouseY)) {
+			done.setFill(17, 92, 124);
+			this.canMoveOn = true;
 		}
 		else
-			this.map1 = false;
-		start.draw(p);
+			this.canMoveOn = false;
+		done.draw(p);
 		p.fill(255);
 		p.textSize(70);
-		p.text("(map1)", 107, 320);
-		
-		// Instructions
-		Rectangle inst = new Rectangle(300, 200, 200, 200);
-		inst.setFill(24, 119, 160);
-		if (inst.isPointInside(mouseX, mouseY)) {
-			inst.setFill(17, 92, 124);
-			this.map2 = true;
-		}
-		else
-			this.map2 = false;
-		inst.draw(p);
-		p.fill(255);
-		p.text("(map2)", 335, 320);
-		
-		// About
-		Rectangle about = new Rectangle(530, 200, 200, 200);
-		about.setFill(24, 119, 160);
-		if (about.isPointInside(mouseX, mouseY)) {
-			about.setFill(17, 92, 124);
-			this.map3 = true;
-		}
-		else
-			this.map3 = false;
-		about.draw(p);
-		p.fill(255);
-		p.text("(map3)", 567, 320);
-		
-		
+		p.text("next", 355, 555);
 		
 		// Title
 		p.textFont(font1);
 		p.fill(101, 155, 123);
-		p.text("choose your map", 90, 150);
+		p.text("choose your slings", 70, 150);
+		
+		// Divider
+		p.stroke(100);
+		p.strokeWeight(2);
+		p.line(400, 200, 400, 440);
+		p.textSize(30);
+		p.textAlign(p.CENTER, p.CENTER);
+		
+		// Sling 1
+		Rectangle red1 = new Rectangle(120, 200, 50, 30);
+		red1.setFill(234, 51, 51);
+		if (red1.isPointInside(mouseX, mouseY)) {
+			red1.setFill(209, 48, 48);
+			this.red1 = true;
+		}
+		else
+			this.red1 = false;
+		red1.draw(p);
+		p.fill(255);
+		p.text(red01, 145, 212);
+		
+		Rectangle green1 = new Rectangle(180, 200, 50, 30);
+		green1.setFill(48, 165, 57);
+		if (green1.isPointInside(mouseX, mouseY)) {
+			green1.setFill(39, 137, 47);
+			this.green1 = true;
+		}
+		else
+			this.green1 = false;
+		green1.draw(p);
+		p.fill(255);
+		p.text(green01, 205, 212);
+		
+		Rectangle blue1 = new Rectangle(240, 200, 50, 30);
+		blue1.setFill(56, 158, 226);
+		if (blue1.isPointInside(mouseX, mouseY)) {
+			blue1.setFill(48, 135, 193);
+			this.blue1 = true;
+		}
+		else
+			this.blue1 = false;
+		blue1.draw(p);
+		p.fill(255);
+		p.text(blue01, 265, 212);
+		
+		p.fill(red01, green01, blue01);
+		p.rect(320, 200, 30, 30);
+		
+		// Sling 2
+		Rectangle red2 = new Rectangle(510, 200, 50, 30);
+		red2.setFill(234, 51, 51);
+		if (red2.isPointInside(mouseX, mouseY)) {
+			red2.setFill(209, 48, 48);
+			this.red2 = true;
+		}
+		else
+			this.red2 = false;
+		red2.draw(p);
+		p.fill(255);
+		p.text(red02, 535, 212);
+		
+		Rectangle green2 = new Rectangle(570, 200, 50, 30);
+		green2.setFill(48, 165, 57);
+		if (green2.isPointInside(mouseX, mouseY)) {
+			green2.setFill(39, 137, 47);
+			this.green2 = true;
+		}
+		else
+			this.green2 = false;
+		green2.draw(p);
+		p.fill(255);
+		p.text(green02, 595, 212);
+		
+		Rectangle blue2 = new Rectangle(630, 200, 50, 30);
+		blue2.setFill(56, 158, 226);
+		if (blue2.isPointInside(mouseX, mouseY)) {
+			blue2.setFill(48, 135, 193);
+			this.blue2 = true;
+		}
+		else
+			this.blue2 = false;
+		blue2.draw(p);
+		p.fill(255);
+		p.text(blue02, 655, 212);
+		
+		p.fill(red02, green02, blue02);
+		p.rect(450, 200, 30, 30);
 	}
 	
 	
-	public boolean map1() {
-		return map1;
-	}
-
-	public boolean map2() {
-		return map2;
+	public boolean done() {
+		return canMoveOn;
 	}
 	
-	public boolean map3() {
-		return map3;
+	public boolean red1() {
+		return red1;
+	}
+	
+	public void red1(int change) {
+		red01 += change;
+	}
+	public int getRed1() {
+		return red01;
+	}
+	
+	public boolean green1() {
+		return green1;
+	}
+	
+	public void green1(int change) {
+		green01 += change;
+	}
+	public int getGreen1() {
+		return green01;
+	}
+	
+	public boolean blue1() {
+		return blue1;
+	}
+	
+	public void blue1(int change) {
+		blue01 += change;
+	}
+	public int getBlue1() {
+		return blue01;
+	}
+	
+	public boolean red2() {
+		return red2;
+	}
+	
+	public void red2(int change) {
+		red02 += change;
+	}
+	public int getRed2() {
+		return red02;
+	}
+	
+	public boolean green2() {
+		return green2;
+	}
+	
+	public void green2(int change) {
+		green02 += change;
+	}
+	public int getGreen2() {
+		return green02;
+	}
+	
+	public boolean blue2() {
+		return blue2;
+	}
+	
+	public void blue2(int change) {
+		blue02 += change;
+	}
+	public int getBlue2() {
+		return blue02;
 	}
 }

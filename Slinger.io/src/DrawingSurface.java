@@ -3,12 +3,10 @@
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.event.MouseEvent;
 
 public class DrawingSurface extends PApplet{
 
@@ -16,13 +14,11 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_HEIGHT = 600;
 	private MenuScreen menu; 
 	private MapMenu mapMenu;
-	private TennisBall tennisBall;
-	private BasketBall basketBall;
-	private Watermelon Watermelon; 
+	private SlingMenu slingMenu;
 	private Map[] maps;
 	private Sling[] slings;
 	private InstructionScreen instructions;
-	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 10 for map1, 20 for map2, 30 for map3.
+	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 3 for Slings, 10 for map1, 20 for map2, 30 for map3.
 	private ArrayList<Integer> keys;
 
 	public DrawingSurface() {
@@ -30,17 +26,12 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		screen = 0;
 		slings = new Sling[2];
-		setSlings();
 		maps = new Map[3];
 		setMaps();
 		menu = new MenuScreen();
 		instructions = new InstructionScreen();
 		mapMenu = new MapMenu();
-	}
-	
-	private void setSlings() {
-		slings[0] = new Sling(new TennisBall(),new Color(0), 5);
-		slings[1] = new Sling(new TennisBall(),new Color(0), 5);
+		slingMenu = new SlingMenu();
 	}
 	
 	private void setMaps() {
@@ -73,6 +64,8 @@ public class DrawingSurface extends PApplet{
 			instructions.draw(this, mx, my);
 		else if (screen == 2) 
 			mapMenu.draw(this,mx,my);
+		else if (screen == 3)
+			slingMenu.draw(this,mx,my, slings);
 		else if (screen == 10) {
 			maps[0].draw(this);
 		}
@@ -99,7 +92,7 @@ public class DrawingSurface extends PApplet{
 				if (menu.inst())
 					screen = 1;
 				if (menu.start())
-					screen = 2;
+					screen = 3;
 			}
 		}
 		if (screen == 1) {
@@ -113,12 +106,39 @@ public class DrawingSurface extends PApplet{
 					screen = 10;
 			}
 			if (mouseButton == RIGHT) {
+				screen = 3;
+			}
+		}
+		if (screen == 3) {
+			if (mouseButton == LEFT) {
+				if (slingMenu.done())
+					screen = 3;
+			}
+			if (mouseButton == RIGHT) {
 				screen = 0;
 			}
 		}
 	}
 	public void mousePressed() {
 		keys.add(mouseButton);
+	}
+	
+	public void mouseWheel(MouseEvent event) {
+		int num = event.getCount();
+		if (screen == 3) {
+			if (slingMenu.red1() && slingMenu.getRed1()+num >= 0 && slingMenu.getRed1()+num <= 255)
+				slingMenu.red1(num);
+			else if (slingMenu.green1() && slingMenu.getGreen1()+num >= 0 && slingMenu.getGreen1()+num <= 255)
+				slingMenu.green1(num);
+			else if (slingMenu.blue1() && slingMenu.getBlue1()+num >= 0 && slingMenu.getBlue1()+num <= 255)
+				slingMenu.blue1(num);
+			else if (slingMenu.red2() && slingMenu.getRed2()+num >= 0 && slingMenu.getRed2()+num <= 255)
+				slingMenu.red2(num);
+			else if (slingMenu.green2() && slingMenu.getGreen2()+num >= 0 && slingMenu.getGreen2()+num <= 255)
+				slingMenu.green2(num);
+			else if (slingMenu.blue2() && slingMenu.getBlue2()+num >= 0 && slingMenu.getBlue2()+num <= 255)
+				slingMenu.blue2(num);
+		}
 	}
 	
 	public void mouseReleased() {
