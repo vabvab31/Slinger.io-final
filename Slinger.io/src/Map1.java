@@ -20,6 +20,14 @@ public class Map1 extends Map{
 		building.setFill(105, 105, 105);
 		add(building);
 		
+		Rectangle leftDoor = new Rectangle(width/2 - 10, 520, 10, 30 );
+		leftDoor.setFill(222, 184, 135);
+		add(leftDoor);
+		
+		Rectangle rightDoor = new Rectangle(width/2, 520, 10, 30 );
+		rightDoor.setFill(222, 184, 135);
+		add(rightDoor);
+		
 		for(int i = width/2 - 40; i < width/2 + 45; i += 30 ) {
 			for(int j = 205; j < 500; j += 35) {
 				Rectangle window = new Rectangle(i,j, 20, 20);
