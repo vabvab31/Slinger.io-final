@@ -1,5 +1,6 @@
 
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.KeyEvent;
@@ -29,7 +30,7 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		screen = 0;
 		slings = new Sling[2];
-		//setSlings();
+		setSlings();
 		maps = new Map[3];
 		setMaps();
 		menu = new MenuScreen();
@@ -37,10 +38,10 @@ public class DrawingSurface extends PApplet{
 		mapMenu = new MapMenu();
 	}
 	
-//	private void setSlings() {
-//		slings[0] = new Sling();
-//		slings[1] = new Sling();
-//	}
+	private void setSlings() {
+		slings[0] = new Sling(new TennisBall(),new Color(0), 5);
+		slings[1] = new Sling(new TennisBall(),new Color(0), 5);
+	}
 	
 	private void setMaps() {
 		maps[0] = new Map1(slings[0],slings[1]);
