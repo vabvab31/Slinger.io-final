@@ -36,6 +36,9 @@ public class Map1 extends Map{
 			}
 		}
 		
+		
+	
+	
 	}
 	
 	public void draw(PApplet p) {
