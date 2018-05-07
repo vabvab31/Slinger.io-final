@@ -2,11 +2,11 @@ import processing.core.PApplet;
 
 public abstract class Projectile {
 	
-	private int velocity; //1-10
-	private int rangeOfMovement; //1-
-	private int power; //1-10
-	private int xPos;
-	private int yPos;
+	protected int velocity; //1-10
+	protected int rangeOfMovement; //1-
+	protected int power; //1-10
+	protected int xPos;
+	protected int yPos;
 	
 	
 	public Projectile(int velocity, int range, int power, int x, int y) {

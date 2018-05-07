@@ -1,3 +1,4 @@
+import lyndon.shapes.Circle;
 import processing.core.PApplet;
 
 public class BasketBall extends Projectile{
@@ -8,8 +9,11 @@ public class BasketBall extends Projectile{
 
 	@Override
 	public void paint(PApplet p) {
-		// TODO Auto-generated method stub
+
+		Circle basketBall = new Circle(xPos, yPos, 10);
+		basketBall.setFill(255, 140, 0);
 		
+		basketBall.draw(p);
 	}
 
 

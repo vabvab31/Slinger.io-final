@@ -15,6 +15,9 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_HEIGHT = 600;
 	private MenuScreen menu; 
 	private MapMenu mapMenu;
+	private TennisBall tennisBall;
+	private BasketBall basketBall;
+	private Watermelon Watermelon; 
 	private Map[] maps;
 	private Sling[] slings;
 	private InstructionScreen instructions;
@@ -26,7 +29,7 @@ public class DrawingSurface extends PApplet{
 		keys = new ArrayList<Integer>();
 		screen = 0;
 		slings = new Sling[2];
-		setSlings();
+		//setSlings();
 		maps = new Map[3];
 		setMaps();
 		menu = new MenuScreen();
@@ -34,10 +37,10 @@ public class DrawingSurface extends PApplet{
 		mapMenu = new MapMenu();
 	}
 	
-	private void setSlings() {
-		slings[0] = new Sling();
-		slings[1] = new Sling();
-	}
+//	private void setSlings() {
+//		slings[0] = new Sling();
+//		slings[1] = new Sling();
+//	}
 	
 	private void setMaps() {
 		maps[0] = new Map1(slings[0],slings[1]);
@@ -62,8 +65,9 @@ public class DrawingSurface extends PApplet{
 		int my = (int)(mouseY/ratioY);
 		
 		scale(ratioX, ratioY);
-		if (screen == 0)
+		if (screen == 0) {
 			menu.draw(this,mx,my);
+		}
 		else if (screen == 1)
 			instructions.draw(this, mx, my);
 		else if (screen == 2) 
