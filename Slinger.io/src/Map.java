@@ -4,7 +4,7 @@ import lyndon.shapes.*;
 import processing.core.PApplet;
 
 public abstract class Map {
-	private Sling player1, player2;
+	protected Sling player1, player2;
 	private ArrayList<Shape> shapes;
 	public Map(Sling player1, Sling player2) {
 		this.player1 = player1;

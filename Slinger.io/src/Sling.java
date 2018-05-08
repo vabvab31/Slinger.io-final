@@ -1,5 +1,7 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
+import lyndon.shapes.*;
 import processing.core.PApplet;
 
 public class Sling {
@@ -101,7 +103,14 @@ public class Sling {
 		}
 		
 		public void draw(PApplet p) {
-			p.rect(0, 0, 10, 10);
+			ArrayList<Rectangle> sling = new ArrayList<Rectangle>();
+			sling.add(new Rectangle(xPos, 300, 5,5));
+			sling.add(new Rectangle(xPos+10, 300, 5,5));
+			sling.add(new Rectangle(xPos, 305, 15,5));
+			sling.add(new Rectangle(xPos+5, 310, 5,10));
+			for(Shape s : sling) {
+				s.draw(p);
+			}
 		}
 		
 }

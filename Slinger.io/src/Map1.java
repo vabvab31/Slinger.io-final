@@ -51,5 +51,7 @@ public class Map1 extends Map{
 	
 	public void draw(PApplet p) {
 		super.draw(p);
+		player1.draw(p);
+		player2.draw(p);
 	}
 }
