@@ -41,4 +41,9 @@ public abstract class Map {
 	{
 		return player2;
 	}
+	
+	public void shoot(boolean fromSlingOne)
+	{
+		
+	}
 }
