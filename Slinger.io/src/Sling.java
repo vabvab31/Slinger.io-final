@@ -104,13 +104,16 @@ public class Sling {
 		
 		public void draw(PApplet p) {
 			ArrayList<Rectangle> sling = new ArrayList<Rectangle>();
-			sling.add(new Rectangle(xPos, 300, 5,5));
-			sling.add(new Rectangle(xPos+10, 300, 5,5));
-			sling.add(new Rectangle(xPos, 305, 15,5));
-			sling.add(new Rectangle(xPos+5, 310, 5,10));
+			sling.add(new Rectangle(xPos, 530, 5,5));
+			sling.add(new Rectangle(xPos+10, 530, 5,5));
+			sling.add(new Rectangle(xPos, 535, 15,5));
+			sling.add(new Rectangle(xPos+5, 540, 5,10));
 			for(Shape s : sling) {
+				((Rectangle)s).setFill(c.getRed(), c.getGreen(), c.getBlue());
+				s.setStroke(c.getRed(), c.getGreen(), c.getBlue());
 				s.draw(p);
 			}
+			p.stroke(0);
 		}
 		
 }

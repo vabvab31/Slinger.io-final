@@ -1,17 +1,14 @@
-
-
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.Shape;
+import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import processing.core.PApplet;
-import processing.core.PImage;
 import processing.event.MouseEvent;
 
 public class DrawingSurface extends PApplet{
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
+	public Point mouse;
 	private MenuScreen menu; 
 	private MapMenu mapMenu;
 	private SlingMenu slingMenu;
@@ -31,6 +28,7 @@ public class DrawingSurface extends PApplet{
 		instructions = new InstructionScreen();
 		mapMenu = new MapMenu();
 		slingMenu = new SlingMenu();
+		mouse = new Point(-10,-10);
 	}
 	
 	private void setMaps() {
@@ -67,8 +65,11 @@ public class DrawingSurface extends PApplet{
 			slingMenu.draw(this,mx,my, slings);
 		else if (screen == 10) {
 			maps[0].draw(this);
-			
-			
+			line(slings[0].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
+			if (!maps[0].shooting(1)) {
+				slings[0].getProjectile().setRange((int)(mouse.x/ratioX-20)/10);
+				slings[0].getProjectile().setVelocity((int)(mouse.y/ratioY-535));
+			}
 		}
 			
 
@@ -83,8 +84,20 @@ public class DrawingSurface extends PApplet{
 	private void controls(PApplet p) {
 		if (screen == 10) {
 			if (isPressed(LEFT)) {
-				
+				mouse = new Point(mouseX,mouseY);
 			}
+			if (isPressed(KeyEvent.VK_D)) {
+				slings[0].move(2);
+			}
+			if (isPressed(KeyEvent.VK_A)) {
+				slings[0].move(-2);
+			}
+			if (isPressed(KeyEvent.VK_SPACE)) {
+				maps[0].shoot(1);
+			}
+			else
+				if(slings[0].getProjectile().xPos > 800 || slings[0].getProjectile().yPos > 600)
+					maps[0].hit(1);
 		}
 	}
 	

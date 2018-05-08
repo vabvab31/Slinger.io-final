@@ -79,5 +79,24 @@ public abstract class Projectile {
 		return this.rangeOfMovement;
 	}
 	
-	public abstract void paint(PApplet p);
+	public void setVelocity(int i)
+	{
+		velocity = i;
+	}
+	
+	public void setPower(int i)
+	{
+		power = i;
+	}
+	
+	public void setRange(int i)
+	{
+		rangeOfMovement = i;
+	}
+	
+	public void draw(PApplet p) {
+		velocity++;
+		yPos += velocity/4;
+		xPos += rangeOfMovement;
+	}
 }
