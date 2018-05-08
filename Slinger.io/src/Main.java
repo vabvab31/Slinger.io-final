@@ -20,7 +20,7 @@ public class Main {
 		window.setLocation(0, 0);
 		window.setSize(Toolkit.getDefaultToolkit().getScreenSize());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setResizable(false);
+		window.setResizable(true);
 		window.setCursor(window.getToolkit().createCustomCursor(
                  new BufferedImage( 1, 1, BufferedImage.TYPE_INT_ARGB ),
                  new Point(),

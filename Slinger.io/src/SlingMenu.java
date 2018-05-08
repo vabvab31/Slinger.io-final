@@ -1,9 +1,11 @@
+import java.awt.Color;
+
 import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PFont;
 
 public class SlingMenu {
-	private boolean done, canMoveOn, red1, red2, green1, green2, blue1, blue2;
+	private boolean done, canMoveOn, red1, red2, green1, green2, blue1, blue2, proj1, proj2, proj01, proj02;
 	private int red01, red02, green01, green02, blue01, blue02;
 	public SlingMenu() {
 		done = false;
@@ -14,6 +16,10 @@ public class SlingMenu {
 		green2 = false;
 		blue1 = false;
 		blue2 = false;
+		proj1 = false;
+		proj2 = false;
+		proj01 = false;
+		proj02 = false;
 		red01 = (int)(Math.random() * 255);
 		red02 = (int)(Math.random() * 255);
 		green01 = (int)(Math.random() * 255);
@@ -28,11 +34,8 @@ public class SlingMenu {
 		
 		PFont font1 = p.createFont("font1.ttf", 120);
 		
-		try {
-			if (slings[0].getProjectile() != null && slings[1].getProjectile() != null)
-				this.done = true;
-		}
-		catch(NullPointerException e){}
+		if (proj01 && proj02)
+			this.done = true;
 
 		// Next
 		Rectangle done = new Rectangle(320, 480, 160, 100);
@@ -141,6 +144,40 @@ public class SlingMenu {
 		
 		p.fill(red02, green02, blue02);
 		p.rect(450, 200, 30, 30);
+		
+		p.textSize(20);
+		Rectangle proj1 = new Rectangle(180, 300, 50, 30);
+		proj1.setFill(160,160,160);
+		if (proj1.isPointInside(mouseX, mouseY)) {
+			proj1.setFill(150,150,150);
+			this.proj1 = true;
+		}
+		else
+			this.proj1 = false;
+		if (this.proj01)
+			proj1.setFill(100, 100, 100);
+		proj1.draw(p);
+		p.fill(255);
+		p.text("Choose", 205, 312);
+		
+		Rectangle proj2 = new Rectangle(570, 300, 50, 30);
+		proj2.setFill(160,160,160);
+		if (proj2.isPointInside(mouseX, mouseY)) {
+			proj2.setFill(150,150,150);
+			this.proj2 = true;
+		}
+		else
+			this.proj2 = false;
+		if (this.proj02)
+			proj2.setFill(100, 100, 100);
+		proj2.draw(p);
+		p.fill(255);
+		p.text("Choose", 595, 312);
+		
+		if (canMoveOn) {
+			slings[0] = new Sling(new TennisBall(), new Color(red01,green01,blue01), 20);
+			slings[1] = new Sling(new TennisBall(), new Color(red02,green02,blue02), 20);
+		}
 	}
 	
 	
@@ -212,5 +249,20 @@ public class SlingMenu {
 	}
 	public int getBlue2() {
 		return blue02;
+	}
+	
+	public boolean proj1() {
+		return proj1;
+	}
+	
+	public boolean proj2() {
+		return proj2;
+	}
+	
+	public void press(int i) {
+		if (i == 0)
+			proj01 = true;
+		else if (i == 1)
+			proj02 = true;
 	}
 }

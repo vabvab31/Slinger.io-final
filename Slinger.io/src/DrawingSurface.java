@@ -27,7 +27,6 @@ public class DrawingSurface extends PApplet{
 		screen = 0;
 		slings = new Sling[2];
 		maps = new Map[3];
-		setMaps();
 		menu = new MenuScreen();
 		instructions = new InstructionScreen();
 		mapMenu = new MapMenu();
@@ -111,8 +110,14 @@ public class DrawingSurface extends PApplet{
 		}
 		if (screen == 3) {
 			if (mouseButton == LEFT) {
-				if (slingMenu.done())
-					screen = 3;
+				if (slingMenu.done()) {
+					setMaps();
+					screen = 2;
+				}
+				if (slingMenu.proj1())
+					slingMenu.press(0);
+				if (slingMenu.proj2())
+					slingMenu.press(1);
 			}
 			if (mouseButton == RIGHT) {
 				screen = 0;

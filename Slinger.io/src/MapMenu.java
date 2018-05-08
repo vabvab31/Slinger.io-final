@@ -12,6 +12,7 @@ public class MapMenu {
 	
 	public void draw (PApplet p, int mouseX, int mouseY) {
 		p.background(60, 61, 68);
+		p.textAlign(p.LEFT);
 		
 		PFont font1 = p.createFont("font1.ttf", 120);
 		PFont font2 = p.createFont("font2.ttf", 150);
