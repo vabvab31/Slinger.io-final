@@ -9,8 +9,8 @@ public class BasketBall extends Projectile{
 	}
 
 	@Override
-	public void paint(PApplet p) {
-
+	public void draw(PApplet p) {
+		super.draw(p);
 		Circle basketBall = new Circle(xPos, yPos, 10);
 		
 		Line stripe1 = new Line(xPos, yPos - 10, xPos, yPos + 10 );

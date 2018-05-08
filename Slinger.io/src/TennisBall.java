@@ -4,14 +4,14 @@ import processing.core.PApplet;
 public class TennisBall extends Projectile{
 
 	public TennisBall() {
-		super(7,7, 2,0,0); //default
+		super(-60,7, 2,20,330); //default
 	}
 	
 	
 
 	@Override
-	public void paint(PApplet p) {
-		
+	public void draw(PApplet p) {
+		super.draw(p);
 		Circle tennisBall =  new Circle(xPos,yPos,5);
 		tennisBall.setFill(160, 185, 40);
 		 

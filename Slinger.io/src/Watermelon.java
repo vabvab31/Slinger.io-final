@@ -9,8 +9,8 @@ public class Watermelon extends Projectile{
 	}
 
 	@Override
-	public void paint(PApplet p) {
-		
+	public void draw(PApplet p) {
+		super.draw(p);
 		Circle Watermelon = new Circle(xPos, yPos, 12);
 		Circle redPart = new Circle(xPos, yPos, 9);
 		Watermelon.setFill(0, 100, 0);
