@@ -67,6 +67,8 @@ public class DrawingSurface extends PApplet{
 			slingMenu.draw(this,mx,my, slings);
 		else if (screen == 10) {
 			maps[0].draw(this);
+			
+			
 		}
 			
 
@@ -75,11 +77,15 @@ public class DrawingSurface extends PApplet{
 		
 		popMatrix();
 		
-		controls();
+		controls(this);
 	}
 
-	private void controls() {
-		
+	private void controls(PApplet p) {
+		if (screen == 10) {
+			if (isPressed(LEFT)) {
+				
+			}
+		}
 	}
 	
 	public void keyPressed() {
