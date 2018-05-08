@@ -31,4 +31,14 @@ public abstract class Map {
 	public void add(Shape s) {
 		shapes.add(s);
 	}
+	
+	public Sling player1()
+	{
+		return player1;
+	}
+	
+	public Sling player2()
+	{
+		return player2;
+	}
 }
