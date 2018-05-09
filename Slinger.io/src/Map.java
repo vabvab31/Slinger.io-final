@@ -79,7 +79,7 @@ public abstract class Map {
 	public void add(Shape s) {
 		shapes.add(s);
 	}
-<<<<<<< HEAD
+
 	
 	public Sling player1()
 	{
@@ -95,6 +95,5 @@ public abstract class Map {
 	{
 		
 	}
-=======
->>>>>>> branch 'master' of https://github.com/vabvab31/Slinger.io-final
+
 }

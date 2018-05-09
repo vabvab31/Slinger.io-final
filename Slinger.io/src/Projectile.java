@@ -4,7 +4,7 @@ public abstract class Projectile {
 	
 	protected int velocity; //1-10
 	protected int rangeOfMovement; //1-
-	protected int power; //1-10
+	protected int power; //max power
 	protected int xPos;
 	protected int yPos;
 	
