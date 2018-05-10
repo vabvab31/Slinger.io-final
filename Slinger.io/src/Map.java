@@ -59,6 +59,11 @@ public abstract class Map {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param i this parameter is either 1 or another number
+	 * @return returns the canShoot1 if its 1, else it returns the canShoot2
+	 */
 	public boolean shooting(int i) {
 		if (i == 1)
 			return canShoot1;
@@ -81,19 +86,6 @@ public abstract class Map {
 	}
 
 	
-	public Sling player1()
-	{
-		return player1;
-	}
 	
-	public Sling player2()
-	{
-		return player2;
-	}
-	
-	public void shoot(boolean fromSlingOne)
-	{
-		
-	}
 
 }

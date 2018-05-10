@@ -67,8 +67,8 @@ public class DrawingSurface extends PApplet{
 			maps[0].draw(this);
 			line(slings[0].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
 			if (!maps[0].shooting(1)) {
-				slings[0].getProjectile().setRange((int)(mouse.x/ratioX-20)/10);
-				slings[0].getProjectile().setVelocity((int)(mouse.y/ratioY-535));
+				slings[0].getProjectile().setYMovement((int)(mouse.x/ratioX-20)/10);
+				slings[0].getProjectile().setXVelocity((int)(mouse.y/ratioY-535));
 			}
 		}
 			

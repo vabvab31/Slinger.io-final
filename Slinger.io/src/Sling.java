@@ -116,4 +116,13 @@ public class Sling {
 			p.stroke(0);
 		}
 		
+		/**
+		 * Returns true if the current location of the sling is inside one of the shpes in the map shapes array that was passed in.
+		 * @param shapes ArrayList of all shapes in the map 
+		 */
+		//public boolean intersect(ArrayList<Shape> shapes)
+		{
+			
+		}
+		
 }

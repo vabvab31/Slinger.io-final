@@ -2,17 +2,18 @@ import processing.core.PApplet;
 
 public abstract class Projectile {
 	
-	protected int velocity; //1-10
-	protected int rangeOfMovement; //1-
-	protected int power; //max power
-	protected int xPos;
+	public static final int maxPower = 10; //filler
+	protected int yMovement; //1-10
+	protected int xMovement; //1-
+	protected int maxHorizontalMovement; //for the sling
+	protected int xPos; 
 	protected int yPos;
 	
 	
-	public Projectile(int velocity, int range, int power, int x, int y) {
-		this.velocity = velocity;
-		this.rangeOfMovement = range;
-		this.power = power;
+	public Projectile(int velocity, int horz, int power, int x, int y) {
+		this.xMovement = velocity;
+		this.yMovement = horz;
+		this.maxHorizontalMovement = power;
 		this.xPos = x;
 		this.yPos = y;
 	}
@@ -34,9 +35,9 @@ public abstract class Projectile {
 	 */
 	public void upgradeVelocity()
 	{
-		if(velocity<10)
+		if(xMovement<10)
 		{
-			velocity++;
+			xMovement++;
 		}
 	}
 	
@@ -46,9 +47,9 @@ public abstract class Projectile {
 	 */
 	public void upgradePower()
 	{
-		if(power<10)
+		if(maxHorizontalMovement<10)
 		{
-			power++;
+			maxHorizontalMovement++;
 		}
 	}
 	
@@ -56,47 +57,47 @@ public abstract class Projectile {
 	 * Adds 1 more unit to the range field
 	 * Doesn't add if the range is already at 10
 	 */
-	public void upgradeRange()
+	public void upgradeYMovement()
 	{
-		if(rangeOfMovement<10)
+		if(yMovement<10)
 		{
-			rangeOfMovement++;
+			yMovement++;
 		}
 	}
 	
-	public int getVelocity()
+	public int getXVelocity()
 	{
-		return this.velocity;
+		return this.xMovement;
 	}
 	
-	public int getPower()
+	public int getMaxHorizontalMovement()
 	{
-		return this.power;
+		return this.maxHorizontalMovement;
 	}
 	
-	public int getRange()
+	public int getHorizontalVelocity()
 	{
-		return this.rangeOfMovement;
+		return this.yMovement;
 	}
 	
-	public void setVelocity(int i)
+	public void setXVelocity(int i)
 	{
-		velocity = i;
+		xMovement = i;
 	}
 	
-	public void setPower(int i)
+	public void setMaxHorizontalMovement(int i)
 	{
-		power = i;
+		maxHorizontalMovement = i;
 	}
 	
-	public void setRange(int i)
+	public void setYMovement(int i)
 	{
-		rangeOfMovement = i;
+		yMovement = i;
 	}
 	
 	public void draw(PApplet p) {
-		velocity++;
-		yPos += velocity/4;
-		xPos += rangeOfMovement;
+		xMovement++;
+		yPos += xMovement/4;
+		xPos += yMovement;
 	}
 }
