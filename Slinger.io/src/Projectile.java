@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import lyndon.shapes.Shape2D;
 import processing.core.PApplet;
 
 public abstract class Projectile {
@@ -101,7 +104,12 @@ public abstract class Projectile {
 		xPos += yMovement;
 	}
 	
-	public void intersect(Sling otherSling, ArrayList<Shape2D>shapes)
+	
+	/**
+	 * Returns true if the current location of the sling is inside one of the shpes in the map shapes array that was passed in.
+	 * @param shapes ArrayList of all shapes in the MAP and all shapes in the otherSling
+	 */
+	public boolean intersect(ArrayList<Shape2D>slingShapes, ArrayList<Shape2D>shapes)
 	{
 		
 	}
