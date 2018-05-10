@@ -6,16 +6,17 @@ import processing.core.PApplet;
 public abstract class Map {
 	protected Sling player1, player2;
 	private boolean canShoot1, canShoot2;
-	private ArrayList<Shape> shapes;
+	private int turn;
+	ArrayList<Shape2D> shapes;
 	private int time;
 	public Map(Sling player1, Sling player2) {
 		this.player1 = player1;
 		this.player2 = player2;
-		shapes = new ArrayList<Shape>();
+		shapes = new ArrayList<Shape2D>();
 		time = -1;
 		canShoot1 = false;
 		canShoot2 = false;
-		this.player1.getProjectile().setXY(player1.xPos()+7, 535);
+		turn = 1;
 	}
 	
 	public void draw(PApplet p) {
@@ -39,7 +40,7 @@ public abstract class Map {
 		}
 		
 		if (canShoot2) {
-			
+			player2.getProjectile().draw(p);
 		}
 	}
 	
@@ -57,8 +58,6 @@ public abstract class Map {
 		else if (player == 2) {
 			canShoot2 = true;
 		}
-		
-	
 	}
 	
 	
@@ -75,20 +74,41 @@ public abstract class Map {
 	
 	public void hit(int player) {
 		if (player == 1) {
-			canShoot1 = false;
-			this.player1.getProjectile().setXY(player1.xPos()+7, 535);
+			this.player2.getProjectile().setXY(player2.xPos()+7, 535);
+			this.player1.decreaseHealth(10);
+			canShoot2 = false;
+			//turn = 1;
 			
 		}
 		else if (player == 2) {
-			canShoot2 = false;
+			this.player1.getProjectile().setXY(player1.xPos()+7, 535);
+			this.player2.decreaseHealth(10);
+			canShoot1 = false;
+			//turn = 2;
 		}
 	}
 	
-	public void add(Shape s) {
+	public void notImportantHit(int player) {
+		if (player == 1) {
+			this.player2.getProjectile().setXY(player2.xPos()+7, 535);
+			canShoot2 = false;
+			//turn = 1;
+			
+		}
+		else if (player == 2) {
+			this.player1.getProjectile().setXY(player1.xPos()+7, 535);
+			canShoot1 = false;
+			//turn = 2;
+		}
+	}
+	
+	public void add(Shape2D s) {
 		shapes.add(s);
 	}
 
-	
+	public int getTurn() {
+		return turn;
+	}
 	
 
 }

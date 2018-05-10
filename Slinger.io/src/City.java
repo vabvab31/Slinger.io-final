@@ -59,7 +59,7 @@ public class City extends Map{
 	
 	public void draw(PApplet p) {
 		super.draw(p);
-		player1.draw(p);
-		player2.draw(p);
+		if (player1.getHealth() > 0) player1.draw(p);
+		if (player2.getHealth() > 0) player2.draw(p);
 	}
 }
