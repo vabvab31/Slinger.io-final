@@ -106,17 +106,25 @@ public abstract class Projectile {
 		xPos += yMovement;
 	}
 	
-<<<<<<< HEAD
-	public void intersect(Sling otherSling, ArrayList<Shape2D> shapes) {
-=======
+
 	
 	/**
 	 * Returns true if the current location of the sling is inside one of the shpes in the map shapes array that was passed in.
 	 * @param shapes ArrayList of all shapes in the MAP and all shapes in the otherSling
 	 */
-	public boolean intersect(ArrayList<Shape2D>slingShapes, ArrayList<Shape2D>shapes)
-	{
->>>>>>> branch 'master' of https://github.com/vabvab31/Slinger.io-final.git
+	public boolean intersect(ArrayList<Shape2D>slingShapes, ArrayList<Shape2D>shapes){
 		
+		for(int i = 0; i < shapes.size(); i++) {
+			if(shapes.get(i).isPointInside(xPos, yPos)) {
+				return true;
+			}
+		}
+		
+		for(int i = 0; i < slingShapes.size(); i++) {
+			if(slingShapes.get(i).isPointInside(xPos, yPos)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
