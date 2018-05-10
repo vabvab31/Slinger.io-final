@@ -100,4 +100,9 @@ public abstract class Projectile {
 		yPos += xMovement/4;
 		xPos += yMovement;
 	}
+	
+	public void intersect(Sling otherSling, ArrayList<Shape2D>shapes)
+	{
+		
+	}
 }
