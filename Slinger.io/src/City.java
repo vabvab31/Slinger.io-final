@@ -1,4 +1,9 @@
 import lyndon.shapes.*;
+/**
+ * The City class is one of the three maps in Slinger.io which is a subclass of the abstract class, map.
+ * 
+ * @author Vaibhav Seshadri
+ */
 import processing.core.PApplet;
 
 public class City extends Map{

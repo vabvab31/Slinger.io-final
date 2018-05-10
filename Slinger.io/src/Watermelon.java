@@ -1,7 +1,12 @@
 import lyndon.shapes.Circle;
 import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
-
+/**
+ * Extends the Projectile class, one of the three projectiles. Strongest but slowest projectile
+ * 
+ * @author Vaibhav Seshadri
+ *
+ */
 public class Watermelon extends Projectile{
 
 	public Watermelon() {
