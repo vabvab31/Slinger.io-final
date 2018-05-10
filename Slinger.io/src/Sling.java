@@ -9,6 +9,7 @@ public class Sling {
 		private Projectile p; 
 		private Color c;
 		private int xPos;
+		private int yPos; //not set in the constructor, set after the draw method is run
 		private int health; //0-100
 		private boolean isDead;
 		private ArrayList<Shape> shapes;
@@ -125,6 +126,18 @@ public class Sling {
 		public boolean intersect(ArrayList<Shape2D> shapes )
 		{
 			
+			for(Shape2D s : shapes)
+			{
+				int x = xPos-2;
+				int y = 60;
+				
+				if(s.isPointInside(xPos, y))
+				{
+					return true;
+				}
+			}
+			
+			return false;
 		}
 		
 }
