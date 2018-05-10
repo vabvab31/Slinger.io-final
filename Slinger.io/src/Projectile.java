@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-import lyndon.shapes.Shape2D;
+import lyndon.shapes.*;
 import processing.core.PApplet;
 
 public abstract class Projectile {
@@ -108,19 +108,17 @@ public abstract class Projectile {
 	
 
 
-	public boolean intersect(ArrayList<Shape2D>slingShapes, ArrayList<Shape2D>shapes){
+	public boolean intersect(ArrayList<Shape2D> shapes){
 		
 		for(int i = 0; i < shapes.size(); i++) {
-			if(shapes.get(i).isPointInside(xPos, yPos)) {
-				return true;
-			}
-		}
-		
-		for(int i = 0; i < slingShapes.size(); i++) {
-			if(slingShapes.get(i).isPointInside(xPos, yPos)) {
+			if(shapes.get(i).isPointInside(xPos-2, yPos) || shapes.get(i).isPointInside(xPos+2, yPos) || shapes.get(i).isPointInside(xPos, yPos-2) || shapes.get(i).isPointInside(xPos, yPos+2)) {
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean intersect(Shape2D shape){
+		return shape.isPointInside(xPos, yPos);
 	}
 }
