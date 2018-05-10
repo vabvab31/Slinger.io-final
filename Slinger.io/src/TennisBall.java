@@ -1,6 +1,11 @@
 import lyndon.shapes.Circle;
 import processing.core.PApplet;
-
+/**
+ * Extends the Projectile class, one of the three projectiles. Weakest but fastest projectile
+ * 
+ * @author Vaibhav Seshadri
+ *
+ */
 public class TennisBall extends Projectile{
 
 	public TennisBall() {

@@ -1,7 +1,12 @@
 import lyndon.shapes.Circle;
 import lyndon.shapes.Line;
 import processing.core.PApplet;
-
+/**
+ * Extends the Projectile class, one of the three projectiles. Projectile that is equally strong as it is fast.
+ * 
+ * @author Vaibhav Seshadri
+ *
+ */
 public class BasketBall extends Projectile{
 
 	public BasketBall() {
