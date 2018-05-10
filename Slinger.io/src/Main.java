@@ -6,6 +6,9 @@ import processing.core.PApplet;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/** The main class that runs the program.
+ * @author Lyndon Lee A
+ */
 public class Main {
 	public static void main(String[] args)
 	{
