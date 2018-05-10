@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 import lyndon.shapes.*;
 import processing.core.PApplet;
-
+/** The abstract class for each of the maps.
+ * @author Lyndon Lee A
+ */
 public abstract class Map {
 	protected Sling player1, player2;
 	private boolean canShoot1, canShoot2;

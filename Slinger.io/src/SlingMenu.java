@@ -3,7 +3,9 @@ import java.awt.Color;
 import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PFont;
-
+/** The screen for selecting the maps.
+ * @author Lyndon Lee A
+ */
 public class SlingMenu {
 	private boolean done, canMoveOn, red1, red2, green1, green2, blue1, blue2, proj1, proj2, proj01, proj02;
 	private int red01, red02, green01, green02, blue01, blue02;

@@ -1,7 +1,9 @@
 import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PFont;
-
+/** The screen for selecting the maps.
+ * @author Lyndon Lee A
+ */
 public class MapMenu {
 	private boolean map1, map2, map3;
 	public MapMenu() {

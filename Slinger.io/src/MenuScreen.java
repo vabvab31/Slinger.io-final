@@ -2,7 +2,9 @@ import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PFont;
 
-
+/** The start screen with the option to start the game, get instructions, or select the about screen.
+ * @author Lyndon Lee A
+ */
 public class MenuScreen {
 	
 	private boolean start, inst, about;

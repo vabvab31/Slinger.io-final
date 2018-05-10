@@ -1,5 +1,7 @@
 import processing.core.PApplet;
-
+/** The screen for the instructions.
+ * @author Lyndon Lee A
+ */
 public class InstructionScreen {
 	
 	public InstructionScreen() {

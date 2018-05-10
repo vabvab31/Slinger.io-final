@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import lyndon.shapes.*;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
+/**	The most superior DrawingSurface for all the menus and maps.
+ * @author Lyndon Lee A
+ */
 
 public class DrawingSurface extends PApplet{
 
@@ -21,6 +24,9 @@ public class DrawingSurface extends PApplet{
 	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 3 for Slings, 10 for map1, 20 for map2, 30 for map3.
 	private ArrayList<Integer> keys;
 
+	
+	/**	Constructor for the DrawingSurface
+	 */
 	public DrawingSurface() {
 		super();
 		keys = new ArrayList<Integer>();
