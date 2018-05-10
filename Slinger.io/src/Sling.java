@@ -113,15 +113,16 @@ public class Sling {
 				((Rectangle)s).setFill(c.getRed(), c.getGreen(), c.getBlue());
 				s.setStroke(c.getRed(), c.getGreen(), c.getBlue());
 				s.draw(p);
+				shapes.add(s);
 			}
 			p.stroke(0);
 		}
 		
 		/**
 		 * Returns true if the current location of the sling is inside one of the shpes in the map shapes array that was passed in.
-		 * @param shapes ArrayList of all shapes in the map 
+		 * @param shapes ArrayList of all shapes in the MAP
 		 */
-		public boolean intersect(ArrayList<Shape2D> shapes)
+		public boolean intersect(ArrayList<Shape2D> shapes )
 		{
 			
 		}
