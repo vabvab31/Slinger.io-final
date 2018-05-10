@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import lyndon.shapes.Shape2D;
 import processing.core.PApplet;
 
 public abstract class Projectile {
@@ -101,5 +104,9 @@ public abstract class Projectile {
 		xMovement++;
 		yPos += xMovement/4;
 		xPos += yMovement;
+	}
+	
+	public void intersect(Sling otherSling, ArrayList<Shape2D> shapes) {
+		
 	}
 }
