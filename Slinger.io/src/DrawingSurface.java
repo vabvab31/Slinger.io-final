@@ -14,7 +14,7 @@ public class DrawingSurface extends PApplet{
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
 	public Point mouse, mouse2;
-	private MenuScreen menu; 
+	private MenuScreen menu;
 	private MapMenu mapMenu;
 	private SlingMenu slingMenu;
 	private Map[] maps;
