@@ -3,7 +3,11 @@ import java.util.ArrayList;
 
 import lyndon.shapes.*;
 import processing.core.PApplet;
-
+/**
+ * Represents a Sling object
+ * @author matthewlee
+ * @version 5-10-18
+ */
 public class Sling {
 
 		private Projectile p; 
