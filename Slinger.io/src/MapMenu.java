@@ -30,7 +30,7 @@ public class MapMenu {
 		m1.draw(p);
 		p.fill(255);
 		p.textSize(70);
-		p.text("(map1)", 107, 320);
+		p.text("CITY", 130, 320);
 		
 		// Map2
 		Rectangle m2 = new Rectangle(300, 200, 200, 200);

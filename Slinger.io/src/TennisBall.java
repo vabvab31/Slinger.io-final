@@ -12,7 +12,7 @@ public class TennisBall extends Projectile{
 	@Override
 	public void draw(PApplet p) {
 		super.draw(p);
-		Circle tennisBall =  new Circle(xPos,yPos,5);
+		Circle tennisBall =  new Circle(xPos,yPos,8);
 		tennisBall.setFill(160, 185, 40);
 		 
 		

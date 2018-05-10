@@ -57,7 +57,10 @@ public abstract class Map {
 		else if (player == 2) {
 			canShoot2 = true;
 		}
+		
+	
 	}
+	
 	
 	/**
 	 * 
