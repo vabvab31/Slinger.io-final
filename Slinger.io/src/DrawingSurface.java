@@ -108,9 +108,11 @@ public class DrawingSurface extends PApplet{
 				}
 				if (isPressed(KeyEvent.VK_D)) {
 					slings[0].move(2);
+					slings[0].getProjectile().xMove(2);
 				}
 				if (isPressed(KeyEvent.VK_A)) {
 					slings[0].move(-2);
+					slings[0].getProjectile().xMove(-2);
 				}
 				if (isPressed(KeyEvent.VK_SPACE)) {
 					maps[0].shoot(1);

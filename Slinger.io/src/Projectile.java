@@ -103,6 +103,17 @@ public abstract class Projectile {
 	}
 	
 	
+	public void xMove(int amt)
+	{
+		xPos += amt;
+	}
+	
+	public void yMove(int amt)
+	{
+		yPos +=amt;
+	}
+	
+	
 	
 	public void draw(PApplet p) {
 		xMovement++;
