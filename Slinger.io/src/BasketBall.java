@@ -11,7 +11,7 @@ public class BasketBall extends Projectile{
 	@Override
 	public void draw(PApplet p) {
 		super.draw(p);
-		Circle basketBall = new Circle(xPos, yPos, 10);
+		Circle basketBall = new Circle(xPos, yPos, 15);
 		
 		Line stripe1 = new Line(xPos, yPos - 10, xPos, yPos + 10 );
 		Line stripe2 = new Line(xPos - 10, yPos, xPos + 10, yPos);

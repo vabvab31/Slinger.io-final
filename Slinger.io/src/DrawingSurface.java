@@ -32,7 +32,7 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void setMaps() {
-		maps[0] = new Map1(slings[0],slings[1]);
+		maps[0] = new City(slings[0],slings[1]);
 	}
 	
 	public void runMe() {

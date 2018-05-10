@@ -1,12 +1,12 @@
 import lyndon.shapes.*;
 import processing.core.PApplet;
 
-public class Map1 extends Map{
+public class City extends Map{
 	
 	private int width = 800;
 	private int height = 900;
 	
-	public Map1(Sling player1, Sling player2) {
+	public City(Sling player1, Sling player2) {
 		super(player1, player2);
 		setMap();
 	}
@@ -27,6 +27,14 @@ public class Map1 extends Map{
 		Rectangle rightDoor = new Rectangle(width/2, 520, 10, 30 );
 		rightDoor.setFill(222, 184, 135);
 		add(rightDoor);
+		
+		Circle leftKnob = new Circle(width/2 - 4, 535, 4 );
+		leftKnob.setFill(255,215,0);
+		add(leftKnob);
+		
+		Circle rightKnob = new Circle(width/2  + 4, 535, 4 );
+		rightKnob.setFill(255,215,0);
+		add(rightKnob);
 		
 		for(int i = width/2 - 40; i < width/2 + 45; i += 30 ) {
 			for(int j = 205; j < 500; j += 35) {
