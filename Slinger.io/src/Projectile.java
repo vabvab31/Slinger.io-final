@@ -2,7 +2,11 @@ import java.util.ArrayList;
 
 import lyndon.shapes.*;
 import processing.core.PApplet;
-
+/**
+ * Represents a projectile object that is abstract
+ * @author matthewlee
+ *@version 5-10-18
+ */
 public abstract class Projectile {
 	
 	public static final int maxPower = 10; //filler
