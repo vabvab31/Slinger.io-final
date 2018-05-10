@@ -1,6 +1,8 @@
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import lyndon.shapes.*;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
 
@@ -8,12 +10,13 @@ public class DrawingSurface extends PApplet{
 
 	public static final int DRAWING_WIDTH = 800;
 	public static final int DRAWING_HEIGHT = 600;
-	public Point mouse;
+	public Point mouse, mouse2;
 	private MenuScreen menu; 
 	private MapMenu mapMenu;
 	private SlingMenu slingMenu;
 	private Map[] maps;
 	private Sling[] slings;
+	private Rectangle screenWindow;
 	private InstructionScreen instructions;
 	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 3 for Slings, 10 for map1, 20 for map2, 30 for map3.
 	private ArrayList<Integer> keys;
@@ -29,6 +32,7 @@ public class DrawingSurface extends PApplet{
 		mapMenu = new MapMenu();
 		slingMenu = new SlingMenu();
 		mouse = new Point(-10,-10);
+		mouse2 = new Point(-10,-10);
 	}
 	
 	private void setMaps() {
@@ -45,7 +49,7 @@ public class DrawingSurface extends PApplet{
 	// line is executed again.
 	public void draw() {
 		background(255);   
-
+		screenWindow = new Rectangle(0,0,width,height);
 		pushMatrix();
 
 		float ratioX = (float)width/DRAWING_WIDTH;
@@ -65,10 +69,19 @@ public class DrawingSurface extends PApplet{
 			slingMenu.draw(this,mx,my, slings);
 		else if (screen == 10) {
 			maps[0].draw(this);
-			line(slings[0].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
-			if (!maps[0].shooting(1)) {
-				slings[0].getProjectile().setYMovement((int)(mouse.x/ratioX-20)/10);
-				slings[0].getProjectile().setXVelocity((int)(mouse.y/ratioY-535));
+			if (maps[0].getTurn() == 1) {
+				line(slings[0].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
+				if (!maps[0].shooting(1)) {
+					slings[0].getProjectile().setYMovement((int)(mouse.x/ratioX-slings[0].xPos())/10);
+					slings[0].getProjectile().setXVelocity((int)(mouse.y/ratioY-535));
+				}
+			}
+			else if (maps[0].getTurn() == 2) {
+				line(slings[1].xPos()+7, 535, mouse2.x/ratioX,mouse2.y/ratioY);
+				if (!maps[0].shooting(2)) {
+					slings[1].getProjectile().setYMovement((int)(mouse2.x/ratioX-slings[1].xPos())/10);
+					slings[1].getProjectile().setXVelocity((int)(mouse2.y/ratioY-535));
+				}
 			}
 		}
 			
@@ -83,27 +96,53 @@ public class DrawingSurface extends PApplet{
 
 	private void controls(PApplet p) {
 		if (screen == 10) {
-			if (isPressed(LEFT)) {
-				mouse = new Point(mouseX,mouseY);
+			if (maps[0].getTurn() == 1) {
+				if (isPressed(LEFT)) {
+					mouse = new Point(mouseX,mouseY);
+				}
+				if (isPressed(KeyEvent.VK_D)) {
+					slings[0].move(2);
+				}
+				if (isPressed(KeyEvent.VK_A)) {
+					slings[0].move(-2);
+				}
+				if (isPressed(KeyEvent.VK_SPACE)) {
+					maps[0].shoot(1);
+				}
+				else {
+					if(slings[0].getProjectile().intersect(slings[1].getShapes()))
+						maps[0].hit(2);
+					else if(slings[0].getProjectile().intersect(maps[0].shapes) || !slings[0].getProjectile().intersect(screenWindow))
+						maps[0].notImportantHit(2);
+				}
 			}
-			if (isPressed(KeyEvent.VK_D)) {
-				slings[0].move(2);
+			else if (maps[0].getTurn() == 2) {
+				if (isPressed(LEFT)) {
+					mouse2 = new Point(mouseX,mouseY);
+				}
+				if (isPressed(KeyEvent.VK_D)) {
+					slings[1].move(2);
+				}
+				if (isPressed(KeyEvent.VK_A)) {
+					slings[1].move(-2);
+				}
+				if (isPressed(KeyEvent.VK_SPACE)) {
+					maps[0].shoot(2);
+				}
+				else {
+					if(slings[1].getProjectile().intersect(slings[0].getShapes()))
+						maps[0].hit(1);
+					else if(slings[1].getProjectile().intersect(maps[0].shapes) || !slings[0].getProjectile().intersect(screenWindow))
+						maps[0].notImportantHit(1);
+				}
 			}
-			if (isPressed(KeyEvent.VK_A)) {
-				slings[0].move(-2);
-			}
-			if (isPressed(KeyEvent.VK_SPACE)) {
-				maps[0].shoot(1);
-			}
-			else
-				if(slings[0].getProjectile().xPos > 800 || slings[0].getProjectile().yPos > 600)
-					maps[0].hit(1);
 		}
 	}
 	
 	public void keyPressed() {
 		keys.add(keyCode);
 	}
+	
 	public void mouseClicked() {
 		if (screen == 0) {
 			if (mouseButton == LEFT) {

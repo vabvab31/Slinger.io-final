@@ -3,7 +3,11 @@ import java.util.ArrayList;
 
 import lyndon.shapes.*;
 import processing.core.PApplet;
-
+/**
+ * Represents a Sling object
+ * @author matthewlee
+ * @version 5-10-18
+ */
 public class Sling {
 
 		private Projectile p; 
@@ -12,7 +16,7 @@ public class Sling {
 		private int yPos; //not set in the constructor, set after the draw method is run
 		private int health; //0-100
 		private boolean isDead;
-		private ArrayList<Shape> shapes;
+		private ArrayList<Shape2D> shapes;
 		
 		
 
@@ -30,6 +34,7 @@ public class Sling {
 			health = 100;
 			isDead = false;
 			p.setXY(xPos, 0);
+			shapes = new ArrayList<Shape2D>();
 		}
 		
 		/**
@@ -110,7 +115,7 @@ public class Sling {
 			sling.add(new Rectangle(xPos+10, 530, 5,5));
 			sling.add(new Rectangle(xPos, 535, 15,5));
 			sling.add(new Rectangle(xPos+5, 540, 5,10));
-			for(Shape s : sling) {
+			for(Shape2D s : sling) {
 				((Rectangle)s).setFill(c.getRed(), c.getGreen(), c.getBlue());
 				s.setStroke(c.getRed(), c.getGreen(), c.getBlue());
 				s.draw(p);
@@ -120,10 +125,10 @@ public class Sling {
 		}
 		
 		/**
-		 * Returns true if the current location of the sling is inside one of the shpes in the map shapes array that was passed in.
+		 * Returns true if the current location of the sling is inside one of the shapes in the map shapes array that was passed in.
 		 * @param shapes ArrayList of all shapes in the MAP
 		 */
-		public boolean intersect(ArrayList<Shape2D> shapes )
+		public boolean intersect(ArrayList<Shape2D> shapes)
 		{
 			
 			for(Shape2D s : shapes)
@@ -131,7 +136,7 @@ public class Sling {
 				int x = xPos-2;
 				int y = 60;
 				
-				if(s.isPointInside(xPos, y))
+				if(s.isPointInside(x, y))
 				{
 					return true;
 				}
@@ -140,4 +145,7 @@ public class Sling {
 			return false;
 		}
 		
+		public ArrayList<Shape2D> getShapes(){
+			return shapes;
+		}
 }

@@ -1,6 +1,7 @@
 import lyndon.shapes.*;
 /**
  * The City class is one of the three maps in Slinger.io which is a subclass of the abstract class, map.
+ * 
  * @author Vaibhav Seshadri
  */
 import processing.core.PApplet;
@@ -63,7 +64,7 @@ public class City extends Map{
 	
 	public void draw(PApplet p) {
 		super.draw(p);
-		player1.draw(p);
-		player2.draw(p);
+		if (player1.getHealth() > 0) player1.draw(p);
+		if (player2.getHealth() > 0) player2.draw(p);
 	}
 }
