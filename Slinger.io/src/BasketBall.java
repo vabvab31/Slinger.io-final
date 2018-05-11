@@ -16,20 +16,22 @@ public class BasketBall extends Projectile{
 	@Override
 	public void draw(PApplet p) {
 		super.draw(p);
-		Circle basketBall = new Circle(xPos, yPos, 15);
+		Circle basketBall = new Circle(xPos, yPos, 18);
 		
-		Line stripe1 = new Line(xPos, yPos - 10, xPos, yPos + 10 );
-		Line stripe2 = new Line(xPos - 10, yPos, xPos + 10, yPos);
-		Line stripe3 = new Line(xPos - 5, yPos - 10, xPos + 5, yPos + 10 );
-		Line stripe4 = new Line(xPos + 5, yPos - 10, xPos + 5, yPos + 10 );
+		Line stripe1 = new Line(xPos, yPos - 9, xPos, yPos + 9 );
+		Line stripe2 = new Line(xPos - 9, yPos, xPos + 9, yPos);
+		
+		
 		
 		basketBall.setFill(255, 140, 0);
 		
 		basketBall.draw(p);
+		p.noFill();
+		p.arc(xPos + 7, yPos, 8, 12, (float) Math.PI/2, (float) (Math.PI/2)*3);
+		p.arc(xPos - 7, yPos, 8, 12, (float) (Math.PI/2)*3, (float) ((Math.PI)*2 + (float)Math.PI/2));		
 		stripe1.draw(p);
 		stripe2.draw(p);
-		stripe3.draw(p);
-		stripe4.draw(p);
+		
 		
 	}
 

@@ -177,7 +177,7 @@ public class SlingMenu {
 		p.text("Choose", 595, 312);
 		
 		if (canMoveOn) {
-			slings[0] = new Sling(new TennisBall(), new Color(red01,green01,blue01), 20);
+			slings[0] = new Sling(new BasketBall(), new Color(red01,green01,blue01), 20);
 			slings[1] = new Sling(new TennisBall(), new Color(red02,green02,blue02), 750);
 		}
 	}
