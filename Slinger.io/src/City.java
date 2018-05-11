@@ -1,7 +1,12 @@
+
 import lyndon.shapes.*;
+
 
 import processing.core.PApplet;
 import processing.core.PImage;
+
+import processing.core.PApplet;
+
 /**
  * The City class is one of the three maps in Slinger.io which is a subclass of the abstract class, map.
  * 
@@ -12,6 +17,7 @@ public class City extends Map{
 	private int width = 800;
 	private int height = 900;
 	private PImage photo;
+
 	
 	public City(Sling player1, Sling player2) {
 		super(player1, player2);

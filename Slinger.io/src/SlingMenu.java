@@ -1,16 +1,17 @@
+
 import java.awt.Color;
 
-import lyndon.shapes.Rectangle;
+import lyndon.shapes.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 /** The screen for selecting the maps.
  * @author Lyndon Lee A
  */
 public class SlingMenu {
-	private boolean done, canMoveOn, red1, red2, green1, green2, blue1, blue2, proj1, proj2, proj01, proj02;
-	private int red01, red02, green01, green02, blue01, blue02;
+	private boolean canMoveOn, red1, red2, green1, green2, blue1, blue2, proj1, proj2;
+	private int red01, red02, green01, green02, blue01, blue02, pro01, pro02;
+	private Projectile pro1, pro2;
 	public SlingMenu() {
-		done = false;
 		canMoveOn = false;
 		red1 = false;
 		red2 = false;
@@ -20,14 +21,14 @@ public class SlingMenu {
 		blue2 = false;
 		proj1 = false;
 		proj2 = false;
-		proj01 = false;
-		proj02 = false;
 		red01 = (int)(Math.random() * 255);
 		red02 = (int)(Math.random() * 255);
 		green01 = (int)(Math.random() * 255);
 		green02 = (int)(Math.random() * 255);
 		blue01 = (int)(Math.random() * 255);
 		blue02 = (int)(Math.random() * 255);
+		pro01 = (int)(Math.random() * 3);
+		pro02 = (int)(Math.random() * 3);
 	}
 	
 	public void draw (PApplet p, int mouseX, int mouseY, Sling[] slings) {
@@ -35,16 +36,12 @@ public class SlingMenu {
 		p.textAlign(p.LEFT);
 		
 		PFont font1 = p.createFont("font1.ttf", 120);
-		
-		if (proj01 && proj02)
-			this.done = true;
 
 		// Next
 		Rectangle done = new Rectangle(320, 480, 160, 100);
 		done.setFill(24, 119, 160);
-		if (!this.done)
-			done.setFill(200,200,200);
-		else if (done.isPointInside(mouseX, mouseY)) {
+		
+		if (done.isPointInside(mouseX, mouseY)) {
 			done.setFill(17, 92, 124);
 			this.canMoveOn = true;
 		}
@@ -147,39 +144,94 @@ public class SlingMenu {
 		p.fill(red02, green02, blue02);
 		p.rect(450, 200, 30, 30);
 		
+		
+		// Projectiles
 		p.textSize(20);
-		Rectangle proj1 = new Rectangle(180, 300, 50, 30);
-		proj1.setFill(160,160,160);
+		Circle proj1 = new Circle(205, 312, 100);
+		Color normal = new Color(160, 185, 40);
+		Color on = new Color(135, 155, 34);
+		if (pro01 == 0) {
+			pro1 = new TennisBall();
+		}
+		else if (pro01 == 1) {
+			pro1 = new Watermelon();
+			normal = new Color(0, 100, 0);
+			on = new Color(0,63,0);
+		}
+		else if (pro01 == 2) {
+			pro1 = new BasketBall();
+			normal = new Color(255, 140, 0);
+			on = new Color(224, 123, 0);
+		}
+		
+		proj1.setFill(normal.getRed(), normal.getGreen(), normal.getBlue());
 		if (proj1.isPointInside(mouseX, mouseY)) {
-			proj1.setFill(150,150,150);
+			proj1.setFill(on.getRed(), on.getGreen(), on.getBlue());
 			this.proj1 = true;
 		}
 		else
 			this.proj1 = false;
-		if (this.proj01)
-			proj1.setFill(100, 100, 100);
+
 		proj1.draw(p);
 		p.fill(255);
-		p.text("Choose", 205, 312);
+		if (pro01 == 0) {
+			p.text("Tennis Ball", 205, 312);
+		}
+		else if (pro01 == 1) {
+			p.text("Watermelon", 205, 312);
+		}
+		else if (pro01 == 2) {
+			p.text("Basketball", 205, 312);
+		}
 		
-		Rectangle proj2 = new Rectangle(570, 300, 50, 30);
-		proj2.setFill(160,160,160);
+		Circle proj2 = new Circle(595, 312, 100);
+		Color normal2 = new Color(160, 185, 40);
+		Color on2 = new Color(135, 155, 34);
+		if (pro02 == 0) {
+			pro2 = new TennisBall();
+		}
+		else if (pro02 == 1) {
+			pro2 = new Watermelon();
+			normal2 = new Color(0, 100, 0);
+			on2 = new Color(0,63,0);
+		}
+		else if (pro02 == 2) {
+			pro2 = new BasketBall();
+			normal2 = new Color(255, 140, 0);
+			on2 = new Color(224, 123, 0);
+		}
+		
+		proj2.setFill(normal2.getRed(), normal2.getGreen(), normal2.getBlue());
 		if (proj2.isPointInside(mouseX, mouseY)) {
-			proj2.setFill(150,150,150);
+			proj2.setFill(on2.getRed(), on2.getGreen(), on2.getBlue());
 			this.proj2 = true;
 		}
 		else
 			this.proj2 = false;
-		if (this.proj02)
-			proj2.setFill(100, 100, 100);
+
 		proj2.draw(p);
 		p.fill(255);
-		p.text("Choose", 595, 312);
+		if (pro02 == 0) {
+			p.text("Tennis Ball", 595, 312);
+		}
+		else if (pro02 == 1) {
+			p.text("Watermelon", 595, 312);
+		}
+		else if (pro02 == 2) {
+			p.text("Basketball", 595, 312);
+		}
 		
 		if (canMoveOn) {
+
 			slings[0] = new Sling(new BasketBall(), new Color(red01,green01,blue01), 20);
 			slings[1] = new Sling(new TennisBall(), new Color(red02,green02,blue02), 750);
+
+			slings[0] = new Sling(pro1, new Color(red01,green01,blue01), 20);
+			slings[1] = new Sling(pro2, new Color(red02,green02,blue02), 750);
+
 		}
+		
+		
 	}
 	
 	
@@ -261,10 +313,20 @@ public class SlingMenu {
 		return proj2;
 	}
 	
-	public void press(int i) {
-		if (i == 0)
-			proj01 = true;
-		else if (i == 1)
-			proj02 = true;
+	public int pro01() {
+		return pro01;
+	}
+	
+	public int pro02() {
+		return pro02;
+	}
+	
+	public void changeProjectile(int i, int num) {
+		if (i == 1) {
+			pro01 += num;
+		}
+		else if (i == 2) {
+			pro02 += num;
+		}
 	}
 }

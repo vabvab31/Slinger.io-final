@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 import lyndon.shapes.*;
@@ -100,6 +101,17 @@ public abstract class Projectile {
 	public void setYMovement(int i)
 	{
 		yMovement = i;
+	}
+	
+	
+	public void xMove(int amt)
+	{
+		xPos += amt;
+	}
+	
+	public void yMove(int amt)
+	{
+		yPos +=amt;
 	}
 	
 	

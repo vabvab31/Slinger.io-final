@@ -1,3 +1,4 @@
+
 import lyndon.shapes.Circle;
 import processing.core.PApplet;
 /**
@@ -19,9 +20,10 @@ public class TennisBall extends Projectile{
 		super.draw(p);
 		Circle tennisBall =  new Circle(xPos,yPos,8);
 		tennisBall.setFill(160, 185, 40);
+
 		p.arc(xPos - 4, yPos, 4, 4, 0, (float) (Math.PI/2));
 		 
-		
+
 		tennisBall.draw(p);
 
 	}
