@@ -134,7 +134,7 @@ public class Sling {
 			for(Shape2D s : shapes)
 			{
 				int x = xPos-2;
-				int y = 60;
+				int y = 540;
 				
 				if(s.isPointInside(x, y))
 				{
