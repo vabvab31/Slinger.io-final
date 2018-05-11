@@ -180,10 +180,6 @@ public class DrawingSurface extends PApplet{
 					setMaps();
 					screen = 2;
 				}
-				if (slingMenu.proj1())
-					slingMenu.press(0);
-				if (slingMenu.proj2())
-					slingMenu.press(1);
 			}
 			if (mouseButton == RIGHT) {
 				screen = 0;
@@ -209,6 +205,12 @@ public class DrawingSurface extends PApplet{
 				slingMenu.green2(num);
 			else if (slingMenu.blue2() && slingMenu.getBlue2()+num >= 0 && slingMenu.getBlue2()+num <= 255)
 				slingMenu.blue2(num);
+			else if (slingMenu.proj1() && slingMenu.pro01() + num >= 0 && slingMenu.pro01() + num < 3) {
+				slingMenu.changeProjectile(1, num);
+			}
+			else if (slingMenu.proj2() && slingMenu.pro02() + num >= 0 && slingMenu.pro02() + num < 3) {
+				slingMenu.changeProjectile(2, num);
+			}
 		}
 	}
 	

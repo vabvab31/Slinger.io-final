@@ -18,7 +18,6 @@ public class MapMenu {
 		p.textAlign(p.LEFT);
 		
 		PFont font1 = p.createFont("font1.ttf", 120);
-		PFont font2 = p.createFont("font2.ttf", 150);
 		
 		// Map1
 		p.textFont(font1);
