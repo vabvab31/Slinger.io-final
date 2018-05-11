@@ -1,3 +1,4 @@
+
 import lyndon.shapes.*;
 import processing.core.PApplet;
 /**
@@ -8,7 +9,7 @@ import processing.core.PApplet;
 public class City extends Map{
 	
 	private int width = 800;
-	private int height = 900;
+	//private int height = 900;
 	
 	public City(Sling player1, Sling player2) {
 		super(player1, player2);
