@@ -27,6 +27,8 @@ public class SlingMenu {
 		green02 = (int)(Math.random() * 255);
 		blue01 = (int)(Math.random() * 255);
 		blue02 = (int)(Math.random() * 255);
+		pro01 = (int)(Math.random() * 3);
+		pro02 = (int)(Math.random() * 3);
 	}
 	
 	public void draw (PApplet p, int mouseX, int mouseY, Sling[] slings) {
