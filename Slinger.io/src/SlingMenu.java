@@ -222,8 +222,13 @@ public class SlingMenu {
 		}
 		
 		if (canMoveOn) {
+
+			slings[0] = new Sling(new BasketBall(), new Color(red01,green01,blue01), 20);
+			slings[1] = new Sling(new TennisBall(), new Color(red02,green02,blue02), 750);
+
 			slings[0] = new Sling(pro1, new Color(red01,green01,blue01), 20);
 			slings[1] = new Sling(pro2, new Color(red02,green02,blue02), 750);
+
 		}
 		
 		
