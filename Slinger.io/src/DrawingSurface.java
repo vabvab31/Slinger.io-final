@@ -43,7 +43,8 @@ public class DrawingSurface extends PApplet{
 	
 	private void setMaps() {
 		maps[0] = new City(slings[0],slings[1]);
-		maps[1] = new Map2(slings[0],slings[1]);
+		maps[1] = new Park(slings[0],slings[1]);
+		maps[2] = new Desert(slings[0],slings[1]);
 	}
 	
 	public void runMe() {
@@ -103,6 +104,23 @@ public class DrawingSurface extends PApplet{
 			else if (maps[1].getTurn() == 2) {
 				line(slings[1].xPos()+7, 535, mouse2.x/ratioX,mouse2.y/ratioY);
 				if (!maps[1].shooting(2)) {
+					slings[1].getProjectile().setYMovement((int)(mouse2.x/ratioX-slings[1].xPos())/10);
+					slings[1].getProjectile().setXVelocity((int)(mouse2.y/ratioY-535));
+				}
+			}
+		}
+		else if (screen == 30) {
+			maps[2].draw(this);
+			if (maps[2].getTurn() == 1) {
+				line(slings[0].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
+				if (!maps[2].shooting(1)) {
+					slings[0].getProjectile().setYMovement((int)(mouse.x/ratioX-slings[0].xPos())/10);
+					slings[0].getProjectile().setXVelocity((int)(mouse.y/ratioY-535));
+				}
+			}
+			else if (maps[2].getTurn() == 2) {
+				line(slings[1].xPos()+7, 535, mouse2.x/ratioX,mouse2.y/ratioY);
+				if (!maps[2].shooting(2)) {
 					slings[1].getProjectile().setYMovement((int)(mouse2.x/ratioX-slings[1].xPos())/10);
 					slings[1].getProjectile().setXVelocity((int)(mouse2.y/ratioY-535));
 				}
@@ -207,6 +225,51 @@ public class DrawingSurface extends PApplet{
 				}
 			}
 		}
+		
+		else if (screen == 30) {
+			if (maps[2].getTurn() == 1) {
+				if (isPressed(LEFT)) {
+					mouse = new Point(mouseX,mouseY);
+				}
+				if (isPressed(KeyEvent.VK_D)) {
+					slings[0].move(2);
+					slings[0].getProjectile().xMove(2);
+				}
+				if (isPressed(KeyEvent.VK_A)) {
+					slings[0].move(-2);
+					slings[0].getProjectile().xMove(-2);
+				}
+				if (isPressed(KeyEvent.VK_SPACE)) {
+					maps[2].shoot(1);
+				}
+				else {
+					if(slings[0].getProjectile().intersect(slings[1].getShapes()))
+						maps[2].hit(2);
+					else if(slings[0].getProjectile().intersect(maps[2].shapes) || !slings[0].getProjectile().intersect(screenWindow))
+						maps[1].notImportantHit(2);
+				}
+			}
+			else if (maps[2].getTurn() == 2) {
+				if (isPressed(LEFT)) {
+					mouse2 = new Point(mouseX,mouseY);
+				}
+				if (isPressed(KeyEvent.VK_D)) {
+					slings[1].move(2);
+				}
+				if (isPressed(KeyEvent.VK_A)) {
+					slings[1].move(-2);
+				}
+				if (isPressed(KeyEvent.VK_SPACE)) {
+					maps[2].shoot(2);
+				}
+				else {
+					if(slings[1].getProjectile().intersect(slings[0].getShapes()))
+						maps[2].hit(1);
+					else if(slings[1].getProjectile().intersect(maps[2].shapes) || !slings[0].getProjectile().intersect(screenWindow))
+						maps[2].notImportantHit(1);
+				}
+			}
+		}
 	}
 	
 	public void keyPressed() {
@@ -233,6 +296,8 @@ public class DrawingSurface extends PApplet{
 					screen = 10;
 				if (mapMenu.map2())
 					screen = 20;
+				if(mapMenu.map3())
+					screen = 30;
 			}
 			if (mouseButton == RIGHT) {
 				screen = 3;

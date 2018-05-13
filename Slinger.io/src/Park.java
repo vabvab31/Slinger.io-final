@@ -3,16 +3,16 @@ import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 
 /**
- * Represents the second Map: 
+ * Represents the second Map: Park
  * @author matthewlee
  *@version 5-10-18
  */
-public class Map2 extends Map{
+public class Park extends Map{
 	
 	private int width = 800;
 	private int height = 900;
 	
-	public Map2(Sling player1, Sling player2) {
+	public Park(Sling player1, Sling player2) {
 		super(player1, player2);
 		setMap();
 	}

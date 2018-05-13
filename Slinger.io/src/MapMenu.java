@@ -45,7 +45,7 @@ public class MapMenu {
 			this.map2 = false;
 		m2.draw(p);
 		p.fill(255);
-		p.text("(map2)", 335, 320);
+		p.text(" PARK", 335, 320);
 		
 		// Map3
 		Rectangle m3 = new Rectangle(530, 200, 200, 200);
@@ -58,7 +58,7 @@ public class MapMenu {
 			this.map3 = false;
 		m3.draw(p);
 		p.fill(255);
-		p.text("(map3)", 567, 320);
+		p.text("DESERT ", 567, 320);
 		
 		
 		
