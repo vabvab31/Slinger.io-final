@@ -93,14 +93,14 @@ public class City extends Map{
 	
 	}
 	
-	public void setup(PApplet p) {
-		photo = p.loadImage("PImage.jpg");
-		photo.resize(800, 600);
-	}
+//	public void setup(PApplet p) {
+//		photo = p.loadImage("PImage.jpg");
+//		photo.resize(800, 600);
+//	}
 	
 	public void draw(PApplet p) {
-		setup(p);
-		p.image(photo, 0, 0);
+//		setup(p);
+//		p.image(photo, 0, 0);
 		
 		super.draw(p);
 		
