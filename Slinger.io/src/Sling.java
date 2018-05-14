@@ -124,6 +124,15 @@ public class Sling {
 			p.stroke(0);
 		}
 		
+		public void increaseHealth(int amount)
+		{
+			health+=amount;
+			if(health>100)
+			{
+				health = 100;
+			}
+		}
+		
 		/**
 		 * Returns true if the current location of the sling is inside one of the shapes in the map shapes array that was passed in.
 		 * @param shapes ArrayList of all shapes in the MAP

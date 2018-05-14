@@ -2,7 +2,11 @@ import lyndon.shapes.Circle;
 import lyndon.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PImage;
-
+/**
+ * 
+ * @author matthewlee
+ *
+ */
 public class Desert extends Map{
 	
 	private int width = 800;
