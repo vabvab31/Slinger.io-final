@@ -49,12 +49,6 @@ public class Desert extends Map{
 		vertical3.setFill(93, 172, 92);
 		vertical3.setStroke(93, 172, 92);
 		add(vertical3);
-		
-		
-		
-		
-		
-	
 	
 	}
 	

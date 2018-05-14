@@ -11,6 +11,7 @@ public abstract class Map {
 	private boolean canShoot1, canShoot2;
 	private int turn;
 	ArrayList<Shape2D> shapes;
+	ArrayList<PowerUp> powerups;
 	private int time;
 	public Map(Sling player1, Sling player2) {
 		this.player1 = player1;
