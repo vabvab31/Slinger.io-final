@@ -25,6 +25,7 @@ public class Park extends Map{
 		add(ground);
 		
 		
+		
 		Rectangle bark = new Rectangle(width/2-50 + 25, 450, 50, 100);
 		bark.setFill(87, 58, 43);
 		bark.setStroke(87, 58, 43);

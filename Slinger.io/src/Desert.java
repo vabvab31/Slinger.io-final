@@ -25,6 +25,8 @@ public class Desert extends Map{
 		ground.setStroke(162, 165, 72);
 		add(ground);
 		
+		//Ellipse ground1 = new Ellipse
+		
 		Rectangle bark = new Rectangle(width/2-50 + 25, 450, 50, 100);
 		bark.setFill(93, 172, 92);
 		bark.setStroke(93, 172, 92);
@@ -52,16 +54,18 @@ public class Desert extends Map{
 	
 	}
 	
-	public void setup(PApplet p) {
-		photo = p.loadImage("Desert.png");
-		photo.resize(800, 600);
-	}
+//	public void setup(PApplet p) {
+//		photo = p.loadImage("Desert.png");
+//		photo.resize(800, 600);
+//	}
 	
 	public void draw(PApplet p) {
-		setup(p);
-		p.image(photo, 0, 0);
+		//setup(p);
+		//p.image(photo, 0, 0);
 		
 		super.draw(p);
+		
+	//	p.arc(a, b, c, d, start, stop);
 		
 		if (player1.getHealth() > 0) player1.draw(p);
 		if (player2.getHealth() > 0) player2.draw(p);
