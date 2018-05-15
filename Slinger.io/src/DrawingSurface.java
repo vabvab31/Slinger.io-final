@@ -226,6 +226,7 @@ public class DrawingSurface extends PApplet{
 			}
 		}
 		
+		
 		else if (screen == 30) {
 			if (maps[2].getTurn() == 1) {
 				if (isPressed(LEFT)) {
@@ -246,7 +247,7 @@ public class DrawingSurface extends PApplet{
 					if(slings[0].getProjectile().intersect(slings[1].getShapes()))
 						maps[2].hit(2);
 					else if(slings[0].getProjectile().intersect(maps[2].shapes) || !slings[0].getProjectile().intersect(screenWindow))
-						maps[1].notImportantHit(2);
+						maps[2].notImportantHit(2);
 				}
 			}
 			else if (maps[2].getTurn() == 2) {
