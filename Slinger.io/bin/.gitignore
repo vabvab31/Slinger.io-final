@@ -1,34 +1,20 @@
 /BasketBall.class
 /City.class
+/Desert.class
 /DrawingSurface.class
+/FullHealth.class
+/HalfHealthIncrease.class
+/IncreaseSlingRange.class
 /InstructionScreen.class
 /Main.class
 /Map.class
 /MapMenu.class
 /MenuScreen.class
+/Park.class
+/PowerUp.class
 /Projectile.class
 /Sling.class
 /SlingMenu.class
 /TennisBall.class
-/Watermelon.class
-<<<<<<< HEAD
 /Tester.class
-=======
-<<<<<<< HEAD
-/Map2.class
-=======
-/Maps/
-/Projectiles/
->>>>>>> branch 'master' of https://github.com/vabvab31/Slinger.io-final
-<<<<<<< HEAD
-/Map3.class
-=======
->>>>>>> branch 'master' of https://github.com/vabvab31/Slinger.io-final.git
->>>>>>> branch 'master' of https://github.com/vabvab31/Slinger.io-final
-/Park.class
-/Desert.class
-/PowerUps.class
-/PowerUp.class
-/FullHealth.class
-/HalfHealthIncrease.class
-/IncreaseSlingRange.class
+/Watermelon.class
