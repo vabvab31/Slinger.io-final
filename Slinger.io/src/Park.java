@@ -26,36 +26,85 @@ public class Park extends Map{
 		
 		
 		
-		Rectangle bark = new Rectangle(width/2-50 + 25, 450, 50, 100);
+		Rectangle bark = new Rectangle(width/2- 25, 400, 50, 150);
 		bark.setFill(87, 58, 43);
 		bark.setStroke(87, 58, 43);
 		add(bark);
 		
-		
-		Rectangle tree1 = new Rectangle(width/2 - 90 , 410, 180, 40);
-		tree1.setFill(87, 191, 43);
-		tree1.setStroke(87, 191, 43);
+		Circle tree1 = new Circle(width/2 - 35, 400, 50);
+		tree1.setFill(42, 201, 52);
+		tree1.setStroke(42, 201, 52);
 		add(tree1);
 		
-		Rectangle tree2 = new Rectangle(width/2 - 70 , 370, 140, 40);
-		tree2.setFill(87, 191, 43);
-		tree2.setStroke(87, 191, 43);
+		Circle tree2 = new Circle(width/2, 400, 50);
+		tree2.setFill(42, 201, 52);
+		tree2.setStroke(42, 201, 52);
 		add(tree2);
 		
-		Rectangle tree3 = new Rectangle(width/2 - 50 , 330, 100, 40);
-		tree3.setFill(87, 191, 43);
-		tree3.setStroke(87, 191, 43);
+		Circle tree3 = new Circle(width/2 + 35, 400, 50);
+		tree3.setFill(42, 201, 52);
+		tree3.setStroke(42, 201, 52);
 		add(tree3);
 		
-		Rectangle tree4 = new Rectangle(width/2 - 30 , 290, 60, 40);
-		tree4.setFill(87, 191, 43);
-		tree4.setStroke(87, 191, 43);
+		Circle tree4 = new Circle(width/2 + 45, 370, 50);
+		tree4.setFill(42, 201, 52);
+		tree4.setStroke(42, 201, 52);
 		add(tree4);
 		
-		Rectangle tree5 = new Rectangle(width/2 - 10 , 250, 20, 40);
-		tree5.setFill(87, 191, 43);
-		tree5.setStroke(87, 191, 43);
+		Circle tree5 = new Circle(width/2 - 45, 370, 50);
+		tree5.setFill(42, 201, 52);
+		tree5.setStroke(42, 201, 52);
 		add(tree5);
+		
+		Circle tree8 = new Circle(width/2, 370, 80);
+		tree8.setFill(42, 201, 52);
+		tree8.setStroke(42, 201, 52);
+		add(tree8);
+		
+		Circle tree6 = new Circle(width/2 - 35, 340, 50);
+		tree6.setFill(42, 201, 52);
+		tree6.setStroke(42, 201, 52);
+		add(tree6);
+		
+		Circle tree7 = new Circle(width/2 + 35, 340, 50);
+		tree7.setFill(42, 201, 52);
+		tree7.setStroke(42, 201, 52);
+		add(tree7);
+		
+		Circle tree9 = new Circle(width/2, 320, 50);
+		tree9.setFill(42, 201, 52);
+		tree9.setStroke(42, 201, 52);
+		add(tree9);
+		
+		
+		
+		
+		
+		
+//		Rectangle tree1 = new Rectangle(width/2 - 90 , 410, 180, 40);
+//		tree1.setFill(87, 191, 43);
+//		tree1.setStroke(87, 191, 43);
+//		add(tree1);
+//		
+//		Rectangle tree2 = new Rectangle(width/2 - 70 , 370, 140, 40);
+//		tree2.setFill(87, 191, 43);
+//		tree2.setStroke(87, 191, 43);
+//		add(tree2);
+//		
+//		Rectangle tree3 = new Rectangle(width/2 - 50 , 330, 100, 40);
+//		tree3.setFill(87, 191, 43);
+//		tree3.setStroke(87, 191, 43);
+//		add(tree3);
+//		
+//		Rectangle tree4 = new Rectangle(width/2 - 30 , 290, 60, 40);
+//		tree4.setFill(87, 191, 43);
+//		tree4.setStroke(87, 191, 43);
+//		add(tree4);
+//		
+//		Rectangle tree5 = new Rectangle(width/2 - 10 , 250, 20, 40);
+//		tree5.setFill(87, 191, 43);
+//		tree5.setStroke(87, 191, 43);
+//		add(tree5);
 		
 		Circle sun = new Circle(150, 150, 70);
 		sun.setFill(252, 252, 43);
