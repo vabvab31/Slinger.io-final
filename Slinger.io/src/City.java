@@ -25,6 +25,7 @@ public class City extends Map{
 	}
 	
 	public void setMap() {
+		
 		Rectangle ground = new Rectangle(0,550,900,100); //Ground
 		ground.setFill(25, 25, 25);
 		add(ground);
@@ -72,6 +73,10 @@ public class City extends Map{
 		add(rightKnob);
 		
 		
+		
+		
+		
+		
 		for(int i = width/2 - 40; i < width/2 + 45; i += 30 ) {
 			for(int j = 265; j < 500; j += 35) {
 				Rectangle window = new Rectangle(i,j, 20, 20);
@@ -102,11 +107,22 @@ public class City extends Map{
 //		photo.resize(800, 600);
 //	}
 	
+
+	
 	public void draw(PApplet p) {
 //		setup(p);
 //		p.image(photo, 0, 0);
+		p.background(p.setGradient(0, 0, 800, 600));
+		
+		Circle moon = new Circle(width/ 2 - 40, 275, 250);
+		moon.setFill(254, 252, 215);
+		moon.draw(p);
 		
 		super.draw(p);
+		
+		
+		
+		
 		
 		if (player1.getHealth() > 0) player1.draw(p);
 		if (player2.getHealth() > 0) player2.draw(p);
