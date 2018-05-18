@@ -103,12 +103,10 @@ public class City extends Map{
 //		photo.resize(800, 600);
 //	}
 	
-
-	
 	public void draw(PApplet p) {
 //		setup(p);
 //		p.image(photo, 0, 0);
-		p.background(p.setGradient(0, 0, 800, 600,  ));
+		p.background(0,24,72);
 		
 		Circle moon = new Circle(width/ 2 - 40, 275, 250);
 		moon.setFill(254, 252, 215);
