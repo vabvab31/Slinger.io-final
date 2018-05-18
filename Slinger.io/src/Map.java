@@ -11,8 +11,9 @@ public abstract class Map {
 	private boolean canShoot1, canShoot2;
 	private int turn;
 	ArrayList<Shape2D> shapes;
-	ArrayList<PowerUp> powerups;
+	PowerUp [] powerups = new PowerUp[3];
 	private int time;
+	private int drawTime; //the time
 	public Map(Sling player1, Sling player2) {
 		this.player1 = player1;
 		this.player2 = player2;
@@ -21,9 +22,15 @@ public abstract class Map {
 		canShoot1 = false;
 		canShoot2 = false;
 		turn = 1;
+		powerups[0] = new FullHealth(0,0);
+		powerups[1] = new HalfHealthIncrease(0,0);
+		powerups[2] = new IncreaseSlingRange(0,0);
+		drawTime = 0;
 	}
 	
 	public void draw(PApplet p) {
+		
+		
 		calcTime(p);
 		
 		for (Shape s : shapes) {
@@ -46,6 +53,85 @@ public abstract class Map {
 		if (canShoot2) {
 			player2.getProjectile().draw(p);
 		}
+		
+	
+		if(time - drawTime == 2000)
+		{
+		
+			
+			int random =  (int)(Math.random() * 3);
+			int randomx = (int)(Math.random() * 400) + 200;
+			
+			if(random==0)
+			{
+				powerups[0] = new FullHealth(randomx, 100);
+				powerups[0].setOriginalTime(time);
+	
+			}
+			
+			else if(random==1)
+			{
+				powerups[1] = new HalfHealthIncrease(randomx, 100);
+				powerups[1].setOriginalTime(time);
+			}
+			
+			else
+			{
+				powerups[2] = new IncreaseSlingRange(randomx, 100);
+				powerups[2].setOriginalTime(time);
+			}
+			
+			
+			drawTime = time;
+	
+		}
+			
+			
+
+		if(powerups[0].getY()!=0)
+		{
+			powerups[0].draw(p);
+			if(powerups[0].getY()<500)
+			{
+				powerups[0].act();
+			}
+			
+			if(time - powerups[0].getOriginalTime() > 10000)
+			{
+				powerups[0] = new FullHealth(0,0);
+			}
+		
+		}
+		if(powerups[1].getY()!=0)
+		{
+			powerups[1].draw(p);
+			if(powerups[1].getY()<500)
+			{
+				powerups[1].act();
+			}
+			if(time - powerups[1].getOriginalTime() > 10000)
+			{
+				powerups[1] = new HalfHealthIncrease(0,0);
+			}
+			
+		}
+		if(powerups[2].getY()!=0)
+		{
+			powerups[2].draw(p);
+			if(powerups[2].getY()<500)
+			{
+				powerups[2].act();
+			}
+			if(time - powerups[2].getOriginalTime() > 10000)
+			{
+				powerups[2] = new IncreaseSlingRange(0,0);
+			}
+		
+		}	
+			
+		
+		
+		
 	}
 	
 	public void calcTime(PApplet p) {
@@ -53,6 +139,7 @@ public abstract class Map {
 			time = 0;
 		}
 		time++;
+		
 	}
 	
 	public void shoot(int player) {

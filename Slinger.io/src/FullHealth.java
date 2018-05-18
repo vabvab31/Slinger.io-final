@@ -6,9 +6,12 @@ import processing.core.PApplet;
  *
  */
 public class FullHealth extends PowerUp{
+	
+	
 
 	public FullHealth(double x, double y) {
-		super(x,y);
+		super(x,y,40,40);
+
 	}
 
 	@Override
@@ -18,9 +21,10 @@ public class FullHealth extends PowerUp{
 	 * Draws a full health restore object
 	 */
 	public void draw(PApplet p) {
-		Rectangle powerup = new Rectangle(xVal(), yVal(), 20,20);
-		powerup.setFill(255, 0, 0);
-		addShape(powerup);
+		
+		Rectangle r = new Rectangle(getX(),getY(),40,40);
+		r.setFill(255, 0, 0);
+		r.draw(p);
 	}
 
 	

@@ -7,7 +7,7 @@ import processing.core.PApplet;
  */
 public class HalfHealthIncrease extends PowerUp{
 	public HalfHealthIncrease(double x, double y) {
-		super(x,y);
+		super(x,y, 40,40);
 	}
 
 	@Override
@@ -17,13 +17,13 @@ public class HalfHealthIncrease extends PowerUp{
 	 * Draws a full health restore object
 	 */
 	public void draw(PApplet p) {
-		Rectangle powerup1 = new Rectangle(xVal(), yVal(), 10,20);
+		Rectangle powerup1 = new Rectangle(getX(), getY(), 20,40);
 		powerup1.setFill(255, 0, 0);
-		addShape(powerup1);
+		powerup1.draw(p);
 		
-		Rectangle powerup2 = new Rectangle(xVal() + 10, yVal(), 10,20);
+		Rectangle powerup2 = new Rectangle(getX()+20, getY(), 20,40);
 		powerup2.setFill(0, 0, 255);
-		addShape(powerup2);
+		powerup2.draw(p);
 	}
 
 	

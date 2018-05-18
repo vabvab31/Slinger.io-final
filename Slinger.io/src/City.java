@@ -90,6 +90,10 @@ public class City extends Map{
 		
 		
 	
+		
+		
+		
+	
 	
 	}
 	
@@ -106,5 +110,8 @@ public class City extends Map{
 		
 		if (player1.getHealth() > 0) player1.draw(p);
 		if (player2.getHealth() > 0) player2.draw(p);
+		
+		
+		
 	}
 }
