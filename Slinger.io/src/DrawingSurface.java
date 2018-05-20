@@ -21,7 +21,8 @@ public class DrawingSurface extends PApplet{
 	private Sling[] slings;
 	private Rectangle screenWindow;
 	private InstructionScreen instructions;
-	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 3 for Slings, 10 for map1, 20 for map2, 30 for map3.
+	private AboutScreen about;
+	private int screen; // 0 for Menu, 1 for Instructions, 2 for Maps, 3 for Slings, 4 for about, 10 for map1, 20 for map2, 30 for map3.
 	private ArrayList<Integer> keys;
 
 	
@@ -35,6 +36,7 @@ public class DrawingSurface extends PApplet{
 		maps = new Map[3];
 		menu = new MenuScreen();
 		instructions = new InstructionScreen();
+		about = new AboutScreen();
 		mapMenu = new MapMenu();
 		slingMenu = new SlingMenu();
 		mouse = new Point(-10,-10);
@@ -73,6 +75,9 @@ public class DrawingSurface extends PApplet{
 			instructions.draw(this, mx, my);
 		else if (screen == 2) 
 			mapMenu.draw(this,mx,my);
+		else if(screen == 4)
+			about.draw(this, mx, my);
+		
 		else if (screen == 3)
 			slingMenu.draw(this,mx,my, slings);
 		else if (screen == 10) {
@@ -284,9 +289,16 @@ public class DrawingSurface extends PApplet{
 					screen = 1;
 				if (menu.start())
 					screen = 3;
+				if(menu.about())
+					screen = 4;
 			}
 		}
 		if (screen == 1) {
+			if (mouseButton == RIGHT) {
+				screen = 0;
+			}
+		}
+		if (screen == 4) {
 			if (mouseButton == RIGHT) {
 				screen = 0;
 			}
