@@ -323,9 +323,10 @@ public class DrawingSurface extends PApplet{
 					screen = 2;
 				}
 			}
-			if (mouseButton == RIGHT) {
-				screen = 0;
-			}
+//Lyndon, fyi, the main menu when you go back from this screen, makes the menu look weird, so i commented it out
+//			if (mouseButton == RIGHT) {
+//				screen = 0;
+//			}
 		}
 	}
 	public void mousePressed() {

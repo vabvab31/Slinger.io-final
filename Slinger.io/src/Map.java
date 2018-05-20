@@ -91,7 +91,7 @@ public abstract class Map {
 		if(powerups[0].getY()!=0)
 		{
 			powerups[0].draw(p);
-			if(powerups[0].getY()<500)
+			if(!powerups[0].isColliding(shapes))
 			{
 				powerups[0].act();
 			}
@@ -105,7 +105,7 @@ public abstract class Map {
 		if(powerups[1].getY()!=0)
 		{
 			powerups[1].draw(p);
-			if(powerups[1].getY()<500)
+			if(!powerups[1].isColliding(shapes))
 			{
 				powerups[1].act();
 			}
@@ -118,7 +118,8 @@ public abstract class Map {
 		if(powerups[2].getY()!=0)
 		{
 			powerups[2].draw(p);
-			if(powerups[2].getY()<500)
+			//if(powerups[2].getY()<500)
+			if(!powerups[2].isColliding(shapes))
 			{
 				powerups[2].act();
 			}
@@ -200,6 +201,8 @@ public abstract class Map {
 	public int getTurn() {
 		return turn;
 	}
+	
+	
 	
 
 }

@@ -45,6 +45,11 @@ public abstract class PowerUp extends Rectangle{
 		originalTime = amt;
 	}
 	
+	public boolean isColliding(ArrayList<Shape2D> shapes)
+	{
+		
+	}
+	
 	 
 	public abstract void draw(PApplet p);
 		
