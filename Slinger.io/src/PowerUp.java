@@ -47,7 +47,20 @@ public abstract class PowerUp extends Rectangle{
 	
 	public boolean isColliding(ArrayList<Shape2D> shapes)
 	{
+		double y  = getY() + 40;
 		
+		double [] x = {getX(), getX() + 5, getX() + 10, getX() + 15,getX() + 20,getX() + 25,getX() + 30,getX() + 35,getX() + 40};
+		
+		for(Shape2D s : shapes)
+		{
+			for(double d : x)
+			{
+				if(s.isPointInside(d,y))
+						return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	 
