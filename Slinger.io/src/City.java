@@ -96,6 +96,10 @@ public class City extends Map{
 		
 		
 	
+		
+		
+		
+	
 	
 	}
 	
@@ -130,7 +134,10 @@ float halfAngle = (float) (angle/2.0);
 	public void draw(PApplet p) {
 //		setup(p);
 //		p.image(photo, 0, 0);
+
 		p.background(0,24,72);
+
+
 		
 		Circle moon = new Circle(width/ 2 - 40, 275, 250);
 		moon.setFill(254, 252, 215);
@@ -168,5 +175,8 @@ float halfAngle = (float) (angle/2.0);
 		
 		if (player1.getHealth() > 0) player1.draw(p);
 		if (player2.getHealth() > 0) player2.draw(p);
+		
+		
+		
 	}
 }

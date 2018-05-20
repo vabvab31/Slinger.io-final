@@ -83,13 +83,18 @@ public class Desert extends Map{
 		
 		//Ellipse ground1 = new Ellipse
 		
-	
+
+		
+		
+		
+
 		
 		
 		
 		
 		
 	
+
 	
 	}
 	

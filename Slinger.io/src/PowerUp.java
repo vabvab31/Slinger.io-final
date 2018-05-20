@@ -1,54 +1,53 @@
 
 import java.util.ArrayList;
-import lyndon.shapes.Shape;
+import lyndon.shapes.*;
 import processing.core.PApplet;
 /**
  * PowerUp objects that randomly spawn on the screen
  * @author matthewlee
  *
  */
-public abstract class PowerUp {
+public abstract class PowerUp extends Rectangle{
 	
-	private double x;
-	private double y;
-	private ArrayList <Shape> shapes;
+	private double vx;
+	private double vy;
+	private int originalTime = 0;
 	
 	
-	public PowerUp(double x, double y)
+	
+	public PowerUp(double x, double y, double width, double height)
 	{
-		this.x = x;
-		this.y = y;
+		super(x,y, width, height);
+		vx = 0;
+		vy = 0;
+		
 	}
 	
-	/**
-	 * 
-	 * @return the x position of the powerup
-	 */
-	public double xVal()
-	{
-		return x;
+	public void act() {
+		vy += 0.25;
+		
+		setX(getX() + vx);
+		setY(getY() + vy);
 	}
 	
-	/**
-	 * 
-	 * @return the y position of the powerup
-	 */
-	public double yVal()
+	public void setVY(double amt)
 	{
-		return y;
+		vy = amt;
 	}
 	
-	public void addShape(Shape s)
+	public int getOriginalTime()
 	{
-		shapes.add(s);
+		return originalTime;
+	}
+
+	public void setOriginalTime(int amt)
+	{
+		originalTime = amt;
 	}
 	
-	public ArrayList <Shape> shapesArray ()
-	{
-		return shapes;
-	}
-	
+	 
 	public abstract void draw(PApplet p);
+		
 	
 	public abstract void performPowerUp(Sling s);
 

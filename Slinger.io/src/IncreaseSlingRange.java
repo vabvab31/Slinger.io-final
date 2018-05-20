@@ -7,7 +7,8 @@ import processing.core.PApplet;
  */
 public class IncreaseSlingRange extends PowerUp{
 	public IncreaseSlingRange(double x, double y) {
-		super(x,y);
+		super(x,y,40,40);
+		
 	}
 
 	@Override
@@ -17,9 +18,10 @@ public class IncreaseSlingRange extends PowerUp{
 	 * Draws a full health restore object
 	 */
 	public void draw(PApplet p) {
-		Rectangle powerup1 = new Rectangle(xVal(), yVal(), 20,20);
-		powerup1.setFill(0, 255, 0);
-		addShape(powerup1);
+		
+		Rectangle r = new Rectangle(getX(),getY(),40,40);
+		r.setFill(0, 255, 0);
+		r.draw(p);
 		
 	}
 
