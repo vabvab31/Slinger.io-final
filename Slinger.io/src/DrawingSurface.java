@@ -44,7 +44,7 @@ public class DrawingSurface extends PApplet{
 	}
 	
 	private void setMaps() {
-		maps[0] = new City(slings[0],slings[1]);
+		maps[0] = new City(this,slings[0],slings[1]);
 		maps[1] = new Park(slings[0],slings[1]);
 		maps[2] = new Desert(slings[0],slings[1]);
 	}
@@ -72,7 +72,7 @@ public class DrawingSurface extends PApplet{
 			menu.draw(this,mx,my);
 		}
 		else if (screen == 1)
-			instructions.draw(this, mx, my);
+			instructions.draw(this);
 		else if (screen == 2) 
 			mapMenu.draw(this,mx,my);
 		else if(screen == 4)

@@ -19,12 +19,12 @@ public class City extends Map{
 	private PImage photo;
 
 	
-	public City(Sling player1, Sling player2) {
+	public City(PApplet p, Sling player1, Sling player2) {
 		super(player1, player2);
-		setMap();
+		setMap(p);
 	}
 	
-	public void setMap() {
+	public void setMap(PApplet p) {
 		
 		Rectangle ground = new Rectangle(0,550,900,100); //Ground
 		ground.setFill(25, 25, 25);
@@ -77,6 +77,7 @@ public class City extends Map{
 		
 		
 		
+		
 		for(int i = width/2 - 40; i < width/2 + 45; i += 30 ) {
 			for(int j = 265; j < 500; j += 35) {
 				Rectangle window = new Rectangle(i,j, 20, 20);
@@ -102,22 +103,70 @@ public class City extends Map{
 	
 	}
 	
+	
+
+public void star(float x, float y, PApplet p) {
+ 
+	
+float angle = (float) (Math.PI * 2 / 5);
+float halfAngle = (float) (angle/2.0);
+
+
+
+	p.beginShape();
+	for (float a = 0; a < Math.PI * 2; a += angle) {
+		float sx = (float) (x + Math.cos(a) * 10);
+		float sy = (float) (y + Math.sin(a) * 10);
+		p.vertex(sx, sy);
+		sx = (float) (x + Math.cos(a+halfAngle) * 5);
+		sy = (float) (y + Math.sin(a+halfAngle) * 5);
+		p.vertex(sx, sy);
+	}
+	p.endShape();
+}
+
+	
 //	public void setup(PApplet p) {
 //		photo = p.loadImage("PImage.jpg");
 //		photo.resize(800, 600);
 //	}
 	
-
-	
 	public void draw(PApplet p) {
 //		setup(p);
 //		p.image(photo, 0, 0);
-		p.background(p.setGradient(0, 0, 800, 600));
+
+		p.background(0,24,72);
+
+
 		
 		Circle moon = new Circle(width/ 2 - 40, 275, 250);
 		moon.setFill(254, 252, 215);
 		moon.draw(p);
 		
+		
+		star(20, 440, p);
+		star(50, 120, p);
+		star(100, 290, p);
+		star(110, 70, p);
+		star(150, 150, p);
+		star(170, 220, p);
+		star(210, 15, p);
+		star(220, 400, p);
+		star(260, 50, p);
+		star(350, 140, p);
+		star(390, 30, p);
+		star(460, 390, p);
+		star(500, 80, p);
+		star(570, 90, p);
+		star(620, 190, p);
+		star(680, 310, p);
+		star(710, 10, p);
+		star(740, 150, p);
+		star(780, 400, p);
+		
+	
+
+
 		super.draw(p);
 		
 		

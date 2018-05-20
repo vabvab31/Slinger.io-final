@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 /**
  * 
- * @author matthewlee
+ * @author Vaibhav Seshadri
  *
  */
 public class Desert extends Map{
@@ -21,6 +21,33 @@ public class Desert extends Map{
 	}
 	
 	public void setMap() {
+		
+		
+		
+		Ellipse cactus1 = new Ellipse(width/2, 330, 50, 200);
+		cactus1.setFill(54, 135, 40);
+		cactus1.setStroke(54, 135, 40);
+		add(cactus1);
+		
+		Ellipse cactus2 = new Ellipse(width/2 + 25, 350, 50, 30);
+		cactus2.setFill(54, 135, 40);
+		cactus2.setStroke(54, 135, 40);
+		add(cactus2);
+		
+		Ellipse cactus3 = new Ellipse(width/2 + 47, 320, 20, 70);
+		cactus3.setFill(54, 135, 40);
+		cactus3.setStroke(54, 135, 40);
+		add(cactus3);
+
+		Ellipse cactus4 = new Ellipse(width/2 - 25, 310, 50, 30);
+		cactus4.setFill(54, 135, 40);
+		cactus4.setStroke(54, 135, 40);
+		add(cactus4);
+		
+		Ellipse cactus5 = new Ellipse(width/2 - 47, 280, 20, 70);
+		cactus5.setFill(54, 135, 40);
+		cactus5.setStroke(54, 135, 40);
+		add(cactus5);
 		
 		Ellipse dune1 = new Ellipse(width/2 - 200, 580, 200, 150);
 		dune1.setFill(230, 232, 190);
@@ -56,33 +83,11 @@ public class Desert extends Map{
 		
 		//Ellipse ground1 = new Ellipse
 		
-		Rectangle bark = new Rectangle(width/2- 12, 480, 25, 50);
-		bark.setFill(93, 172, 92);
-		bark.setStroke(93, 172, 92);
-		add(bark);
-		
-		Rectangle cactus1 = new Rectangle(width/2 - 70 , 490, 70, 20);
-		cactus1.setFill(93, 172, 92);
-		cactus1.setStroke(93, 172, 92);
-		add(cactus1);
-		
-		Rectangle vertical1 = new Rectangle(width/2 - 70 , 370, 15, 60);
-		vertical1.setFill(93, 172, 92);
-		vertical1.setStroke(93, 172, 92);
-		add(vertical1);
-		
-		Rectangle vertical2 = new Rectangle(width/2 - 15 , 310, 15, 90);
-		vertical2.setFill(93, 172, 92);
-		vertical2.setStroke(93, 172, 92);
-		add(vertical2);
-		
-		Rectangle vertical3 = new Rectangle(width/2 + 70 - 30, 340, 15, 75);
-		vertical3.setFill(93, 172, 92);
-		vertical3.setStroke(93, 172, 92);
-		add(vertical3);
 
 		
 		
+		
+
 		
 		
 		
