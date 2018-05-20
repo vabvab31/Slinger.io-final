@@ -4,8 +4,8 @@ import processing.core.PApplet;
 
 /**
  * Represents the second Map: Park
- * @author matthewlee
- *@version 5-10-18
+ * @author Vaibhav Seshadri
+ *@version 5-17-18
  */
 public class Park extends Map{
 	
