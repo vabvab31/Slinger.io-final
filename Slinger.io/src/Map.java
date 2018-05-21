@@ -128,11 +128,7 @@ public abstract class Map {
 				powerups[2] = new IncreaseSlingRange(0,0);
 			}
 		
-		}	
-			
-		
-		
-		
+		}
 	}
 	
 	public void calcTime(PApplet p) {
@@ -169,14 +165,14 @@ public abstract class Map {
 			this.player2.getProjectile().setXY(player2.xPos()+7, 535);
 			this.player1.decreaseHealth(10);
 			canShoot2 = false;
-			//turn = 1;
+			turn = 1;
 			
 		}
 		else if (player == 2) {
 			this.player1.getProjectile().setXY(player1.xPos()+7, 535);
 			this.player2.decreaseHealth(10);
 			canShoot1 = false;
-			//turn = 2;
+			turn = 2;
 		}
 	}
 	
@@ -184,13 +180,13 @@ public abstract class Map {
 		if (player == 1) {
 			this.player2.getProjectile().setXY(player2.xPos()+7, 535);
 			canShoot2 = false;
-			//turn = 1;
+			turn = 1;
 			
 		}
 		else if (player == 2) {
 			this.player1.getProjectile().setXY(player1.xPos()+7, 535);
 			canShoot1 = false;
-			//turn = 2;
+			turn = 2;
 		}
 	}
 	
