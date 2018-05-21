@@ -11,16 +11,16 @@ import processing.core.PApplet;
 public abstract class Projectile {
 	
 	public static final int maxPower = 10; //filler
-	protected int yMovement; //1-10
-	protected int xMovement; //1-
+	protected int xVelocity; //1-10
+	protected int yVelocity; //1-
 	protected int maxHorizontalMovement; //for the sling
 	protected int xPos; 
 	protected int yPos;
 	
 	
 	public Projectile(int velocity, int horz, int power, int x, int y) {
-		this.xMovement = velocity;
-		this.yMovement = horz;
+		this.yVelocity = velocity;
+		this.xVelocity = horz;
 		this.maxHorizontalMovement = power;
 		this.xPos = x;
 		this.yPos = y;
@@ -43,9 +43,9 @@ public abstract class Projectile {
 	 */
 	public void upgradeVelocity()
 	{
-		if(xMovement<10)
+		if(yVelocity<10)
 		{
-			xMovement++;
+			yVelocity++;
 		}
 	}
 	
@@ -67,15 +67,15 @@ public abstract class Projectile {
 	 */
 	public void upgradeYMovement()
 	{
-		if(yMovement<10)
+		if(yVelocity<10)
 		{
-			yMovement++;
+			yVelocity++;
 		}
 	}
 	
 	public int getXVelocity()
 	{
-		return this.xMovement;
+		return this.xVelocity;
 	}
 	
 	public int getMaxHorizontalMovement()
@@ -83,14 +83,14 @@ public abstract class Projectile {
 		return this.maxHorizontalMovement;
 	}
 	
-	public int getHorizontalVelocity()
+	public int getYVelocity()
 	{
-		return this.yMovement;
+		return this.yVelocity;
 	}
 	
 	public void setXVelocity(int i)
 	{
-		xMovement = i;
+		xVelocity = i;
 	}
 	
 	public void setMaxHorizontalMovement(int i)
@@ -98,9 +98,9 @@ public abstract class Projectile {
 		maxHorizontalMovement = i;
 	}
 	
-	public void setYMovement(int i)
+	public void setYVelocity(int i)
 	{
-		yMovement = i;
+		yVelocity = i;
 	}
 	
 	
@@ -117,9 +117,9 @@ public abstract class Projectile {
 	
 	
 	public void draw(PApplet p) {
-		xMovement++;
-		yPos += xMovement/4;
-		xPos += yMovement;
+		yVelocity++;
+		yPos += yVelocity/4;
+		xPos += xVelocity*2;
 	}
 	
 
