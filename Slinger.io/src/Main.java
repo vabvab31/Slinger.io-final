@@ -1,16 +1,24 @@
-import javax.swing.*;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+
+
+
+import javax.swing.JFrame;
 
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /** The main class that runs the program.
  * @author Lyndon Lee A
  */
 public class Main {
-	public static void main(String[] args)
+	public static void main(String[] args) 
 	{
 		DrawingSurface drawing = new DrawingSurface();
 		PApplet.runSketch(new String[]{""}, drawing);
@@ -28,6 +36,10 @@ public class Main {
                  null ) );
 
 		window.setVisible(true);
+	
+	
 	}
+	
+	
   
 }
