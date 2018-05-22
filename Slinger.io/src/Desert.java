@@ -11,8 +11,13 @@ import processing.core.PImage;
 public class Desert extends Map{
 
 	private int width = 800;
-	private int height = 900;
+	private int height = 600;
+	private float x = 1 , y = 400;
+	private float r = 204, g = 238, b = 255;
+	private boolean isDay = true, isNight = false;
 	private PImage photo;
+	
+
 
 
 	public Desert(Sling player1, Sling player2) {
@@ -73,7 +78,7 @@ public class Desert extends Map{
 
 
 
-		for (int i = 0; i < 10; i ++) {
+		for (int i = 0; i < 20; i ++) {
 
 			int x = (int) (Math.random()* 80 + 360);
 			int y = (int) (Math.random()* 80 + 360);
@@ -84,7 +89,7 @@ public class Desert extends Map{
 
 		}
 
-		for (int i = 0; i < 7; i ++) {
+		for (int i = 0; i < 14; i ++) {
 
 			int x = (int) (Math.random()* 55 + 425);
 			int y = (int) (Math.random()* 55 + 305);
@@ -95,7 +100,7 @@ public class Desert extends Map{
 
 		}
 
-		for (int i = 0; i < 5; i ++) {
+		for (int i = 0; i < 10; i ++) {
 
 			int x = (int) (Math.random()* 30 + 401);
 			int y = (int) (Math.random()* 30 + 280);
@@ -124,8 +129,79 @@ public class Desert extends Map{
 	//	}
 
 	public void draw(PApplet p) {
-
-
+		
+		
+		
+		
+		if(isDay == true) {
+		
+			p.background(r, g, b);
+			p.fill(244, 249, 99);
+			p.stroke(244, 249, 99);
+			p.ellipse(x, y, 80, 80);
+			
+			r = (float) (r- 0.02);
+		
+			
+			g = (float) (g- 0.02);
+		
+			
+			b = (float) (b- 0.02);
+			
+		
+		
+			x = (float) (x + 0.1);
+			
+			y = (float) (y- 0.1);
+			
+		
+			if(x > 400.00) {
+			y =  (float) (y + 0.2);
+			
+			}
+		
+		}
+		
+		if(x > 780) {
+			isDay = false;
+			isNight = true;
+		}
+		
+		if(x < 20) {
+			isDay = true;
+			isNight = false;
+		}
+		
+		if(isNight == true) {
+			
+			p.background(r, g, b);
+			p.fill(254, 252, 215);
+			p.stroke(254, 252, 215);
+			p.ellipse(x, y, 80, 80);
+			
+			r = (float) (r + 0.02);
+			
+			
+			g = (float) (g + 0.02);
+			
+			
+			b = (float) (b + 0.02);
+			
+		
+		
+			x = (float) (x - 0.1);
+	
+			y = (float) (y - 0.1);
+			
+		
+			if(x < 400.00) {
+			y =  (float) (y + 0.2);
+			
+			}
+		
+		}
+		
+		
 		super.draw(p);
 
 
