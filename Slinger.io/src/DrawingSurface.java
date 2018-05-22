@@ -84,34 +84,39 @@ public class DrawingSurface extends PApplet{
 			maps[map].draw(this);
 			if (maps[map].getTurn() == 1 || maps[map].getTurn() == 2) {
 				int turn = maps[map].getTurn()-1;
-				if (!maps[map].shooting(turn+1)) {
-					if (map == 0) stroke(255);
-					slings[turn].getProjectile().setXVelocity((int)(mouse.x/ratioX-slings[turn].xPos())/10);
-					slings[turn].getProjectile().setYVelocity((int)(mouse.y/ratioY-535));
-					int xVel = slings[turn].getProjectile().getXVelocity();
-					int yVel = slings[turn].getProjectile().getYVelocity();
-					if (Math.sqrt(xVel*xVel + yVel*yVel) > 70) {
-						double angle = 0;
-						if(xVel!=0)
-							angle = Math.atan((-yVel)/(xVel*10.0));
-
+				if (maps[map].move(turn+1) == 1) {
+					if (!maps[map].shooting(turn+1)) {
 						if (map == 0) stroke(255);
-						
-						if (turn == 0) {
-							slings[turn].getProjectile().setXVelocity((int) ((70*Math.cos(angle))/10));
-							slings[turn].getProjectile().setYVelocity(-(int) (70*Math.sin(angle)));
-							line(slings[turn].xPos()+7, 535, slings[turn].xPos()+7+(int) ((70*Math.cos(angle))/10)*10,535-(int) (70*Math.sin(angle)));
+						slings[turn].getProjectile().setXVelocity((int)(mouse.x/ratioX-slings[turn].xPos())/10);
+						slings[turn].getProjectile().setYVelocity((int)(mouse.y/ratioY-535));
+						int xVel = slings[turn].getProjectile().getXVelocity();
+						int yVel = slings[turn].getProjectile().getYVelocity();
+						if (Math.sqrt(xVel*xVel + yVel*yVel) > slings[turn].getProjectile().MAX_VELOCITY) {
+							double angle = 0;
+							if(xVel!=0)
+								angle = Math.atan((-yVel)/(xVel*10.0));
+
+							if (map == 0) stroke(255);
+							
+							if (turn == 0) {
+								slings[turn].getProjectile().setXVelocity((int) ((slings[turn].getProjectile().MAX_VELOCITY*Math.cos(angle))/10));
+								slings[turn].getProjectile().setYVelocity(-(int) (slings[turn].getProjectile().MAX_VELOCITY*Math.sin(angle)));
+								line(slings[turn].xPos()+7, 535, slings[turn].xPos()+7+(int) ((slings[turn].getProjectile().MAX_VELOCITY*Math.cos(angle))/10)*10,535-(int) (slings[turn].getProjectile().MAX_VELOCITY*Math.sin(angle)));
+							}
+							else if (turn == 1) {
+								slings[turn].getProjectile().setXVelocity(-(int) ((slings[turn].getProjectile().MAX_VELOCITY*Math.cos(angle))/10));
+								slings[turn].getProjectile().setYVelocity((int) (slings[turn].getProjectile().MAX_VELOCITY*Math.sin(angle)));
+								line(slings[turn].xPos()+7, 535, slings[turn].xPos()+7-(int) ((slings[turn].getProjectile().MAX_VELOCITY*Math.cos(angle))/10)*10,535+(int) (slings[turn].getProjectile().MAX_VELOCITY*Math.sin(angle)));
+							}
 						}
-						else if (turn == 1) {
-							slings[turn].getProjectile().setXVelocity(-(int) ((70*Math.cos(angle))/10));
-							slings[turn].getProjectile().setYVelocity((int) (70*Math.sin(angle)));
-							line(slings[turn].xPos()+7, 535, slings[turn].xPos()+7-(int) ((70*Math.cos(angle))/10)*10,535+(int) (70*Math.sin(angle)));
+						else {
+							line(slings[turn].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
 						}
+						stroke(0);
 					}
-					else {
-						line(slings[turn].xPos()+7, 535, mouse.x/ratioX,mouse.y/ratioY);
-					}
-					stroke(0);
+				}
+				else if (maps[map].move(turn+1) == 1) {
+					
 				}
 			}
 			Rectangle pause = new Rectangle(390,10,20,20);
@@ -128,7 +133,7 @@ public class DrawingSurface extends PApplet{
 		}
 		
 		
-			
+		
 
 		fill(180, 66, 64);
 		rect(mx-2, my-2, 5, 5);
@@ -142,16 +147,25 @@ public class DrawingSurface extends PApplet{
 		if (screen == 10 || screen == 20 || screen == 30) {
 			int map = screen/10-1;
 			if (maps[map].getTurn() == 1) {
-				if (isPressed(LEFT)) {
+				if (maps[map].move(1) == 0) {
+					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A))
+						maps[map].move(1, 2);
+					if (isPressed(LEFT))
+						maps[map].move(1, 1);
+				}
+				if (isPressed(LEFT) && maps[map].move(1) == 1) {
+					maps[map].move(1, 1);
 					mouse = new Point(mouseX,mouseY);
 				}
-				if (isPressed(KeyEvent.VK_D)) {
-					slings[0].move(2);
-					slings[0].getProjectile().xMove(2);
-				}
-				if (isPressed(KeyEvent.VK_A)) {
-					slings[0].move(-2);
-					slings[0].getProjectile().xMove(-2);
+				else if (maps[map].canMove(1)) {
+					if (isPressed(KeyEvent.VK_D)) {
+						slings[0].move(2);
+						slings[0].getProjectile().xMove(2);
+					}
+					if (isPressed(KeyEvent.VK_A)) {
+						slings[0].move(-2);
+						slings[0].getProjectile().xMove(-2);
+					}
 				}
 				if (isPressed(KeyEvent.VK_SPACE)) {
 					maps[map].shoot(1);
@@ -164,16 +178,26 @@ public class DrawingSurface extends PApplet{
 				}
 			}
 			else if (maps[map].getTurn() == 2) {
-				if (isPressed(LEFT)) {
+				if (maps[map].move(2) == 0) {
+					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A))
+						maps[map].move(2, 2);
+					if (isPressed(LEFT))
+						maps[map].move(2, 1);
+				}
+				if (isPressed(LEFT) && maps[map].move(2) == 1) {
+					
+					maps[map].move(2, 1);
 					mouse = new Point(mouseX,mouseY);
 				}
-				if (isPressed(KeyEvent.VK_D)) {
-					slings[1].move(1);
-					slings[1].getProjectile().xMove(2);
-				}
-				if (isPressed(KeyEvent.VK_A)) {
-					slings[1].move(-1);
-					slings[1].getProjectile().xMove(-2);
+				else if (maps[map].canMove(2)) {
+					if (isPressed(KeyEvent.VK_D)) {
+						slings[1].move(1);
+						slings[1].getProjectile().xMove(2);
+					}
+					if (isPressed(KeyEvent.VK_A)) {
+						slings[1].move(-1);
+						slings[1].getProjectile().xMove(-2);
+					}
 				}
 				if (isPressed(KeyEvent.VK_SPACE)) {
 					maps[map].shoot(2);

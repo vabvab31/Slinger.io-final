@@ -10,7 +10,7 @@ import processing.core.PApplet;
  */
 public abstract class Projectile {
 	
-	public static final int maxPower = 10; //filler
+	public static final int MAX_VELOCITY = 70; //filler
 	protected int xVelocity; //1-10
 	protected int yVelocity; //1-
 	protected int maxHorizontalMovement; //for the sling
