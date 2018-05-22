@@ -56,7 +56,7 @@ public class Desert extends Map{
 		
 		Rectangle ground = new Rectangle(0,550,900,100); //Ground
 		ground.setFill(230, 232, 190);
-		//ground.setStroke(230, 232, 190);
+		ground.setStroke(230, 232, 190);
 		add(ground);
 		
 		//Ellipse ground1 = new Ellipse
