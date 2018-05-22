@@ -200,9 +200,13 @@ public abstract class Map {
 		for (PowerUp pu : powerups) {
 			if (player1.getProjectile().intersect(pu)) {
 				pu.performPowerUp(player1);
+				pu.setX(-100);
+				pu.setY(-100);
 			}
 			if (player2.getProjectile().intersect(pu)) {
 				pu.performPowerUp(player2);
+				pu.setX(-100);
+				pu.setY(-100);
 			}
 		}
 	}
