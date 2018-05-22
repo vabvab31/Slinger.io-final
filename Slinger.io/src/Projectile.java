@@ -127,9 +127,11 @@ public abstract class Projectile {
 	public boolean intersect(ArrayList<Shape2D> shapes){
 		
 		for(int i = 0; i < shapes.size(); i++) {
-			if(shapes.get(i).isPointInside(xPos-2, yPos) || shapes.get(i).isPointInside(xPos+2, yPos) || shapes.get(i).isPointInside(xPos, yPos-2) || shapes.get(i).isPointInside(xPos, yPos+2)) {
+			/*if(shapes.get(i).isPointInside(xPos-2, yPos) || shapes.get(i).isPointInside(xPos+2, yPos) || shapes.get(i).isPointInside(xPos, yPos-2) || shapes.get(i).isPointInside(xPos, yPos+2)) {
 				return true;
-			}
+			}*/
+			if (shapes.get(i).isPointInside(xPos, yPos))
+				return true;
 		}
 		return false;
 	}

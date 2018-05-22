@@ -36,6 +36,9 @@ public abstract class Map {
 		for (Shape s : shapes) {
 			s.draw(p);
 		}
+		
+		p.stroke(0);
+		
 		p.fill(209, 47, 29);
 		p.rect(20, 20, 50, 5);
 		p.fill(72, 150, 73);
@@ -197,8 +200,6 @@ public abstract class Map {
 	public int getTurn() {
 		return turn;
 	}
-	
-	
 	
 
 }

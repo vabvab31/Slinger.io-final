@@ -1,6 +1,6 @@
-import lyndon.shapes.Circle;
-import lyndon.shapes.Ellipse;
-import lyndon.shapes.Rectangle;
+import lyndon.shapes.*;
+import java.awt.geom.Ellipse2D;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 /**
@@ -73,8 +73,6 @@ public class Desert extends Map{
 		dune5.setFill(230, 232, 190);
 		dune5.setStroke(230, 232, 190);
 		add(dune5);
-		
-		
 		
 		Rectangle ground = new Rectangle(0,550,900,100); //Ground
 		ground.setFill(230, 232, 190);
