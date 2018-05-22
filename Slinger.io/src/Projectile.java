@@ -139,4 +139,8 @@ public abstract class Projectile {
 	public boolean intersect(Shape2D shape){
 		return shape.isPointInside(xPos, yPos);
 	}
+	
+	public boolean intersect(PowerUp pu){
+		return pu.isPointInside(xPos, yPos);
+	}
 }

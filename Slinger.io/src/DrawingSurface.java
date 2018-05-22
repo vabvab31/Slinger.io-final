@@ -148,8 +148,10 @@ public class DrawingSurface extends PApplet{
 			int map = screen/10-1;
 			if (maps[map].getTurn() == 1) {
 				if (maps[map].move(1) == 0) {
-					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A))
+					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A)) {
 						maps[map].move(1, 2);
+						maps[map].setDistance(1, slings[0].getProjectile().getMaxHorizontalMovement());
+					}
 					if (isPressed(LEFT))
 						maps[map].move(1, 1);
 				}
@@ -161,10 +163,12 @@ public class DrawingSurface extends PApplet{
 					if (isPressed(KeyEvent.VK_D)) {
 						slings[0].move(2);
 						slings[0].getProjectile().xMove(2);
+						maps[map].walk(1);
 					}
 					if (isPressed(KeyEvent.VK_A)) {
 						slings[0].move(-2);
 						slings[0].getProjectile().xMove(-2);
+						maps[map].walk(1);
 					}
 				}
 				if (isPressed(KeyEvent.VK_SPACE)) {
@@ -179,8 +183,10 @@ public class DrawingSurface extends PApplet{
 			}
 			else if (maps[map].getTurn() == 2) {
 				if (maps[map].move(2) == 0) {
-					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A))
+					if (isPressed(KeyEvent.VK_D) || isPressed(KeyEvent.VK_A)) {
 						maps[map].move(2, 2);
+						maps[map].setDistance(2, slings[1].getProjectile().getMaxHorizontalMovement());
+					}
 					if (isPressed(LEFT))
 						maps[map].move(2, 1);
 				}
@@ -193,10 +199,12 @@ public class DrawingSurface extends PApplet{
 					if (isPressed(KeyEvent.VK_D)) {
 						slings[1].move(1);
 						slings[1].getProjectile().xMove(2);
+						maps[map].walk(2);
 					}
 					if (isPressed(KeyEvent.VK_A)) {
 						slings[1].move(-1);
 						slings[1].getProjectile().xMove(-2);
+						maps[map].walk(2);
 					}
 				}
 				if (isPressed(KeyEvent.VK_SPACE)) {

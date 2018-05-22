@@ -69,6 +69,17 @@ public abstract class Map {
 			else if (move1 == 1) {
 				canMove1 = false;
 			}
+			else if (move1 == 2) {
+				canMove1 = true;
+				p.textFont(font);
+				p.fill(150);
+				p.text(distance1, 380, 120);
+				if (distance1 <= 0) {
+					move1 = 0;
+					canMove1 = false;
+					turn = 2;
+				}
+			}
 		}
 		else if (turn == 2) {
 			if (move2 == 0) {
@@ -78,6 +89,17 @@ public abstract class Map {
 			}
 			else if (move2 == 1) {
 				canMove2 = false;
+			}
+			else if (move2 == 2) {
+				canMove2 = true;
+				p.textFont(font);
+				p.fill(150);
+				p.text(distance2, 380, 120);
+				if (distance2 <= 0) {
+					move2 = 0;
+					canMove2 = false;
+					turn = 1;
+				}
 			}
 		}
 		
@@ -173,6 +195,15 @@ public abstract class Map {
 				powerups[2] = new IncreaseSlingRange(0,0);
 			}
 		
+		}
+		
+		for (PowerUp pu : powerups) {
+			if (player1.getProjectile().intersect(pu)) {
+				pu.performPowerUp(player1);
+			}
+			if (player2.getProjectile().intersect(pu)) {
+				pu.performPowerUp(player2);
+			}
 		}
 	}
 	
@@ -278,6 +309,24 @@ public abstract class Map {
 		}
 		else {
 			return move2;
+		}
+	}
+	
+	public void walk(int player) {
+		if (player == 1) {
+			distance1--;
+		}
+		else {
+			distance2--;
+		}
+	}
+	
+	public void setDistance(int player, int distance) {
+		if (player == 1) {
+			distance1 = distance;
+		}
+		else {
+			distance2 = distance;
 		}
 	}
 }

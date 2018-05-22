@@ -11,7 +11,7 @@ import processing.core.PApplet;
 public class BasketBall extends Projectile{
 	
 	public BasketBall() {
-		super(5, 5, 5,0,0);
+		super(5, 5, 50,0,0);
 	}
 
 	@Override

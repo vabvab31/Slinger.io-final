@@ -12,7 +12,7 @@ import processing.core.PApplet;
 public class Watermelon extends Projectile{
 	
 	public Watermelon() {
-		super(2,3,9,0,0);
+		super(2,3,50,0,0);
 	}
 
 	@Override
