@@ -8,9 +8,9 @@ import processing.core.PApplet;
  *
  */
 public class TennisBall extends Projectile{
-
+	
 	public TennisBall() {
-		super(-60,7, 2,20,330); //default
+		super(-60,7, 70,20,330); //default
 	}
 	
 	

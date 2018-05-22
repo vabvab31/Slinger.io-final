@@ -10,7 +10,7 @@ import processing.core.PApplet;
  */
 public abstract class Projectile {
 	
-	public static final int maxPower = 10; //filler
+	public static final int MAX_VELOCITY = 70; //filler
 	protected int xVelocity; //1-10
 	protected int yVelocity; //1-
 	protected int maxHorizontalMovement; //for the sling
@@ -127,14 +127,20 @@ public abstract class Projectile {
 	public boolean intersect(ArrayList<Shape2D> shapes){
 		
 		for(int i = 0; i < shapes.size(); i++) {
-			if(shapes.get(i).isPointInside(xPos-2, yPos) || shapes.get(i).isPointInside(xPos+2, yPos) || shapes.get(i).isPointInside(xPos, yPos-2) || shapes.get(i).isPointInside(xPos, yPos+2)) {
+			/*if(shapes.get(i).isPointInside(xPos-2, yPos) || shapes.get(i).isPointInside(xPos+2, yPos) || shapes.get(i).isPointInside(xPos, yPos-2) || shapes.get(i).isPointInside(xPos, yPos+2)) {
 				return true;
-			}
+			}*/
+			if (shapes.get(i).isPointInside(xPos, yPos))
+				return true;
 		}
 		return false;
 	}
 	
 	public boolean intersect(Shape2D shape){
 		return shape.isPointInside(xPos, yPos);
+	}
+	
+	public boolean intersect(PowerUp pu){
+		return pu.isPointInside(xPos, yPos);
 	}
 }
